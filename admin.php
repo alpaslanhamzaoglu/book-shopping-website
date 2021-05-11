@@ -11,7 +11,7 @@
     <div class="container">
         <table class="table">
             <thead>
-                <th scope=“col”>abdullah</th>
+                <th scope=“col”>suzan</th>
                 <th scope=“col”>erg</th>
                 <th scope=“col”>wrhh</th>
             </thead>
