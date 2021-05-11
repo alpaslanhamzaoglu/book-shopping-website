@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <th scope=“row”> asdfa </th>
-                    <td>adfsadghfjgadsfhjdsa</td>
+                    <td>alpaslan</td>
                     <td>adfsadga</td>                    
                 </tr>
             </tbody>
