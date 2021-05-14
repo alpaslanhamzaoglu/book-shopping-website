@@ -65,7 +65,7 @@
         </div>
         </form>
         <br>
-    <form action="createUser.php" method="POST">
+    <form action="userForm.php" method="POST">
     <div class="form-group">
 
         <label for="uID">uID</label>
@@ -89,11 +89,10 @@
         <label for="password">password</label>
         <input class="form-control" id="password" name="password" placeholder="password">
     </div>
-    <button type="submit" class="btn btn-primary">ekle</button>
-    <button type="submit" class="btn btn-secondary">Search</button>
+    <button type="submit" name="button" value="add" class="btn btn-primary">Add</button>
+    <button type="submit" name="button" value="search" class="btn btn-secondary">Search</button>
     </form>
 
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
