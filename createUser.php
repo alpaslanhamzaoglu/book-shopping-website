@@ -12,8 +12,10 @@ if (isset($_POST['password']) && isset($_POST['userName']) && isset($_POST['user
     $email = $_POST['userEmail'];
     $password = $_POST['password'];
 
-    $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
-    $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+    if (empty($_POST['modSince']) and empty($_POT['adminSince'])) { //this is a regular user
+        $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
+        $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+    }
 
     
     header ("Location: admin.php");

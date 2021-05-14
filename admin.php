@@ -48,16 +48,22 @@
             </tbody>
             
         </table>
+        <form action="deleteUser.php" method="POST">
         <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
-        <button class="btn btn-danger">delete</button>
+        <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="uID"> Test
+        <?php 
+            include "config.php";
+            $sql_statement = "SELECT * FROM users";
+            $result = mysqli_query($db, $sql_statement);
+            while($row = mysqli_fetch_assoc($result)) {
+                $id = $row['uID'];
+                echo "<option value='$id'>$id</option>";
+            }
+        ?>
+        </select>
+        <button class="btn btn-danger" style="padding:2.5px; font-size: 10px;">delete</button>
         </div>
+        </form>
         <br>
     <form action="createUser.php" method="POST">
     <div class="form-group">
@@ -73,6 +79,12 @@
 
         <label for="userEmail">email</label>
         <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Email">
+
+        <label for="adminSince">admin since</label>
+        <input class="form-control" id="adminSince" name="adminSince" placeholder="DD/MM/YYYY">
+
+        <label for="modSince">mod since</label>
+        <input class="form-control" id="modSince" name="modSince" placeholder="DD/MM/YYYY">
 
         <label for="password">password</label>
         <input class="form-control" id="password" name="password" placeholder="password">
