@@ -81,10 +81,10 @@
         <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Email">
 
         <label for="adminSince">admin since</label>
-        <input class="form-control" id="adminSince" name="adminSince" placeholder="DD/MM/YYYY">
+        <input class="form-control" id="adminSince" name="adminSince" validate="date" placeholder="DD/MM/YYYY">
 
         <label for="modSince">mod since</label>
-        <input class="form-control" id="modSince" name="modSince" placeholder="DD/MM/YYYY">
+        <input class="form-control" id="modSince" name="modSince" validate="date" placeholder="DD/MM/YYYY">
 
         <label for="password">password</label>
         <input class="form-control" id="password" name="password" placeholder="password">

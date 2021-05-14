@@ -13,15 +13,35 @@ if ($_POST["button"] == "add") {
         $email = $_POST['userEmail'];
         $password = $_POST['password'];
 
-        if (empty($_POST['modSince']) and empty($_POT['adminSince'])) { //this is a regular user
+        if (empty($_POST['modSince']) && empty($_POST['adminSince'])) { //this is a regular user
             $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
             $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            header ("Location: admin.php");
+        }
+
+        else if (!empty($_POST['adminSince'])) {
+            //$mysqltime = date('Y-m-d',strototime($_POST['adminSince']));
+            $date = $_POST['adminSince'];
+            $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
+            $result1 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            $sql_statement = "INSERT INTO `admin`(`uID`, `since`) VALUES ('$id','$date')";
+            $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            header ("Location: admin.php");
+            
+        }
+
+        else if (!empty($_POST['modSince'])) {
+            //$mysqltime = date('Y-m-d',strototime($_POST['adminSince']));
+            $date = $_POST['modSince'];
+            $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
+            $result1 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            $sql_statement = "INSERT INTO `moderators`(`uID`, `since`) VALUES ('$id','$date')";
+            $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            header ("Location: admin.php");
+            
         }
 
         
-        header ("Location: admin.php");
-        
-
 
     }
 
