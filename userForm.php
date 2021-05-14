@@ -63,7 +63,37 @@ if ($_POST["button"] == "add") {
 }
 
 else {
-    
+    if (isset($_POST['password']) && isset($_POST['userName']) && isset($_POST['userSurname']) && isset($_POST['uID']) && isset($_POST['userEmail'])) { 
+        
+        $sql_statement = "SELECT * FROM users WHERE ";
+        if (!empty($_POST['userName'])) {
+            $sql_statement = $sql_statement . " name = " . $_POST['userName'];
+        }
+        if (!empty($_POST['userSurname'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " surname = " . $_POST['userSurname'];
+        }
+        if (!empty($_POST['uID'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " uID = " . $_POST['uID'];
+        }
+        if (!empty($_POST['userEmail'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " email = " . $_POST['userEmail'];
+        }
+    }
+
+    if (substr($sql_statement,-6) == "WHERE ") { 
+        $sql_statement =  "SELECT * FROM users";
+    }
+
+    echo $sql_statement;
 }
 
 
