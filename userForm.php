@@ -127,8 +127,7 @@ else {
                         
                         $result = mysqli_query($db, $sql_statement);
                         if (mysqli_num_rows($result) == 0) {
-                            echo $sql_statement;
-                            //header ("Location: noResults.php");
+                            header ("Location: noResults.php");
                         }
                         while($row = mysqli_fetch_assoc($result))
                         {

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <?php 
 
 include "config.php";
@@ -23,17 +24,17 @@ if ($_POST["button"] == "add") {
 }
 
 else {
-    if (isset($_POST['password']) && isset($_POST['userName']) && isset($_POST['userSurname']) && isset($_POST['uID']) && isset($_POST['userEmail'])) { 
+    if (isset($_POST['rating']) && isset($_POST['rcomment']) && isset($_POST['uID']) && isset($_POST['bID'])) { 
         
-        $sql_statement = "SELECT * FROM users WHERE ";
-        if (!empty($_POST['userName'])) {
-            $sql_statement = $sql_statement . " name = " . "'" . $_POST['userName'] . "'";
+        $sql_statement = "SELECT * FROM review WHERE ";
+        if (!empty($_POST['rating'])) {
+            $sql_statement = $sql_statement . " rating = " . "'" . $_POST['rating'] . "'";
         }
-        if (!empty($_POST['userSurname'])) {
+        if (!empty($_POST['rcomment'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " surname = " . "'" . $_POST['userSurname'] . "'";
+            $sql_statement = $sql_statement . " rcomment = " . "'" . $_POST['rcomment'] . "'";
         }
         if (!empty($_POST['uID'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
@@ -41,44 +42,31 @@ else {
             }
             $sql_statement = $sql_statement . " uID = " . $_POST['uID'];
         }
-        if (!empty($_POST['userEmail'])) {
+        if (!empty($_POST['bID'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " email = " . "'" . $_POST['userEmail'] . "'";
+            $sql_statement = $sql_statement . " bID = " . "'" . $_POST['bID'] . "'";
         }
     }
 
     if (substr($sql_statement,-6) == "WHERE ") { 
-        $sql_statement =  "SELECT * FROM users";
+        $sql_statement =  "SELECT * FROM review";
     }
 }
 
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1 class="text-center"> Search Results </h1>
-<br><br>
-    <div class="container">
+<h1 class="text-center">Search Results</h1>
+<hr>
+<div class="container">
         <table class="table">
             <thead>
-                <th scope=“col”>id</th>
-                <th scope=“col”>name</th>
-                <th scope=“col”>surname</th>
-                <th scope=“col”>email</th>
-                <th scope=“col”>user type</th>
-                <th scope=“col”>since</th>
-                <th scope=“col”>password</th>
+                <th scope=“col”>rating</th>
+                <th scope=“col”>rcomment</th>
+                <th scope=“col”>uID</th>
+                <th scope=“col”>bID</th>
             </thead>
             <tbody>
                     <?php 
@@ -87,67 +75,30 @@ else {
                         
                         $result = mysqli_query($db, $sql_statement);
                         if (mysqli_num_rows($result) == 0) {
-                            echo $sql_statement;
-                            //header ("Location: noResults.php");
+                            header ("Location: noResults.php");
                         }
                         while($row = mysqli_fetch_assoc($result))
                         {
-                            $id = $row['uID'];
-                            $email = $row['email'];
-                            $name = $row['name'];
-                            $surname = $row['surname'];
-                            $password = $row['upassword'];
+                            $uID = $row['uID'];
+                            $rcomment = $row['rcomment'];
+                            $bID = $row['bID'];
+                            $rating = $row['rating'];
 
-                            $check_statement = "SELECT since FROM moderators WHERE uID ='" . $id . "'";
-                            $is_moderator = mysqli_query($db, $check_statement);
-                            $since = mysqli_fetch_assoc($is_moderator);
-                            $date = "not admin / mod";
-                            if (is_null($since['since']))
-                            {
-                                $check_statement = "SELECT since FROM admin WHERE uID ='" . $id . "'";
-                                $is_admin = mysqli_query($db, $check_statement);
-                                $since = mysqli_fetch_assoc($is_admin);
-                                if (is_null($since['since'])) {
-                                    $user_type = "normal";
-                                }
-                                else {
-                                    $user_type = "admin";
-                                    $date = $since['since'];
-                                }
-                            }
-                            else {
-                                $date = $since['since'];
-                                $check_statement = "SELECT since FROM admin WHERE uID ='" . $id . "'";
-                                $is_admin = mysqli_query($db, $check_statement);
-                                $since = mysqli_fetch_assoc($is_admin);
-                                
-                                if (is_null($since['since'])) {
-                                    $user_type = "mod";
-                                }
-                                else {
-                                    $user_type = "admin and mod";
-                                    $date = $date . " (mod) - " . $since['since'] . " (admin)";
-                                }
-                            }
+                            
 
                             echo "<tr>";
-                            echo "<th scope=“row”> $id </th>";
-                            echo "<td> $name </td>";
-                            echo "<td> $surname </td>";
-                            echo "<td> $email </td>";
-                            echo "<td> $user_type </td>";
-                                echo "<td> $date </td>";
-                            echo "<td> $password </td>";
+                            echo "<th scope=“row”> $rating </th>";
+                            echo "<td> $rcomment </td>";
+                            echo "<td> $uID </td>";
+                            echo "<td> $bID </td>";
                             echo "<tr/>";
 
                         }
                     
                     ?>                  
             </tbody>
-            
         </table>
-        
-
-
-</body>
+        <br>
+    </div>
+    <br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
