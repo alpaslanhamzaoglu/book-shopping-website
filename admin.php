@@ -16,6 +16,7 @@
                 <th scope=“col”>surname</th>
                 <th scope=“col”>email</th>
                 <th scope=“col”>user type</th>
+                <th scope=“col”>since</th>
                 <th scope=“col”>password</th>
             </thead>
             <tbody>
@@ -35,6 +36,7 @@
                             $check_statement = "SELECT since FROM moderators WHERE uID ='" . $id . "'";
                             $is_moderator = mysqli_query($db, $check_statement);
                             $since = mysqli_fetch_assoc($is_moderator);
+                            $date = "not admin / mod";
                             if (is_null($since['since']))
                             {
                                 $check_statement = "SELECT since FROM admin WHERE uID ='" . $id . "'";
@@ -45,12 +47,23 @@
                                 }
                                 else {
                                     $user_type = "admin";
+                                    $date = $since['since'];
                                 }
                             }
                             else {
-                                $user_type = "mod";
+                                $date = $since['since'];
+                                $check_statement = "SELECT since FROM admin WHERE uID ='" . $id . "'";
+                                $is_admin = mysqli_query($db, $check_statement);
+                                $since = mysqli_fetch_assoc($is_admin);
+                                
+                                if (is_null($since['since'])) {
+                                    $user_type = "mod";
+                                }
+                                else {
+                                    $user_type = "admin and mod";
+                                    $date = $date . " (mod) - " . $since['since'] . " (admin)";
+                                }
                             }
-                            
 
                             echo "<tr>";
                             echo "<th scope=“row”> $id </th>";
@@ -58,6 +71,7 @@
                             echo "<td> $surname </td>";
                             echo "<td> $email </td>";
                             echo "<td> $user_type </td>";
+                                echo "<td> $date </td>";
                             echo "<td> $password </td>";
                             echo "<tr/>";
 

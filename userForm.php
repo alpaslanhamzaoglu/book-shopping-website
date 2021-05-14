@@ -19,7 +19,7 @@ if ($_POST["button"] == "add") {
             header ("Location: admin.php");
         }
 
-        else if (!empty($_POST['adminSince'])) {
+        else if (!empty($_POST['adminSince']) && empty($_POST['modSince'])) {
             //$mysqltime = date('Y-m-d',strototime($_POST['adminSince']));
             $date = $_POST['adminSince'];
             $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
@@ -30,7 +30,7 @@ if ($_POST["button"] == "add") {
             
         }
 
-        else if (!empty($_POST['modSince'])) {
+        else if (!empty($_POST['modSince']) && empty($_POST['adminSince'])) {
             //$mysqltime = date('Y-m-d',strototime($_POST['adminSince']));
             $date = $_POST['modSince'];
             $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
@@ -40,17 +40,30 @@ if ($_POST["button"] == "add") {
             header ("Location: admin.php");
             
         }
+        else {
 
-        
+            $date = $_POST['modSince'];
+            $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
+            $result1 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+            $sql_statement = "INSERT INTO `moderators`(`uID`, `since`) VALUES ('$id','$date')";
+            $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
 
+            $date = $_POST['adminSince'];
+            $sql_statement = "INSERT INTO `admin`(`uID`, `since`) VALUES ('$id','$date')";
+            $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+
+            header ("Location: admin.php");
+        }
     }
 
     else
     {
-
         echo "The form is not set.";
-
     }
+}
+
+else {
+    
 }
 
 
