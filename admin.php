@@ -15,7 +15,7 @@
                 <th scope=“col”>name</th>
                 <th scope=“col”>surname</th>
                 <th scope=“col”>email</th>
-                <th scope=“col”>admin / mod since</th>
+                <th scope=“col”>user type</th>
                 <th scope=“col”>password</th>
             </thead>
             <tbody>
@@ -31,14 +31,33 @@
                             $name = $row['name'];
                             $surname = $row['surname'];
                             $password = $row['upassword'];
-                            $since = "not an admin / mod";
+
+                            $check_statement = "SELECT since FROM moderators WHERE uID ='" . $id . "'";
+                            $is_moderator = mysqli_query($db, $check_statement);
+                            $since = mysqli_fetch_assoc($is_moderator);
+                            if (is_null($since['since']))
+                            {
+                                $check_statement = "SELECT since FROM admin WHERE uID ='" . $id . "'";
+                                $is_admin = mysqli_query($db, $check_statement);
+                                $since = mysqli_fetch_assoc($is_admin);
+                                if (is_null($since['since'])) {
+                                    $user_type = "normal";
+                                }
+                                else {
+                                    $user_type = "admin";
+                                }
+                            }
+                            else {
+                                $user_type = "mod";
+                            }
+                            
 
                             echo "<tr>";
                             echo "<th scope=“row”> $id </th>";
                             echo "<td> $name </td>";
                             echo "<td> $surname </td>";
                             echo "<td> $email </td>";
-                            echo "<td> $since </td>";
+                            echo "<td> $user_type </td>";
                             echo "<td> $password </td>";
                             echo "<tr/>";
 
@@ -81,10 +100,10 @@
         <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Email">
 
         <label for="adminSince">admin since</label>
-        <input class="form-control" id="adminSince" name="adminSince" validate="date" placeholder="DD/MM/YYYY">
+        <input class="form-control" id="adminSince" name="adminSince" validate="date" placeholder="YYYY-MM-DD">
 
         <label for="modSince">mod since</label>
-        <input class="form-control" id="modSince" name="modSince" validate="date" placeholder="DD/MM/YYYY">
+        <input class="form-control" id="modSince" name="modSince" validate="date" placeholder="YYYY-MM-DD">
 
         <label for="password">password</label>
         <input class="form-control" id="password" name="password" placeholder="password">
