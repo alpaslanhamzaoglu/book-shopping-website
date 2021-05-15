@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -8,21 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <table class="table">
-            <thead>
-                <th scope=“col”>alperen</th>
-                <th scope=“col”>erg</th>
-                <th scope=“col”>wrhh</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope=“row”> asdfa </th>
-                    <td>alpaslan</td>
-                    <td>adfsadga</td>                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <?php 
+        include "user.php";
+        include "review.php";
+        include 'wishlist.php';
+        include 'includes.php';
+
+    ?>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
