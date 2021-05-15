@@ -11,6 +11,12 @@
         <?php 
             include "book.php";
             include "pastpurchase.php";
+            include "user.php";
+            include "review.php";
+            include "author.php";
+            include "shoppinglist.php";
+            include "wishlist.php";
+            include "includes.php";
         ?>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
