@@ -34,8 +34,7 @@
                     echo "<td> $price </td>";
                     echo "<td> $category </td>";
                     echo "<tr/>";
-                }
-            
+                }            
             ?>                  
         </tbody>        
     </table>
@@ -46,13 +45,19 @@
                     include "config.php";
                     $sql_statement = "SELECT * FROM books";
                     $result = mysqli_query($db, $sql_statement);
-                    while($row = mysqli_fetch_assoc($result)) {
-                        $id = $row['bID'];
-                        echo "<option value='$id'>$id</option>";
+                    if (mysqli_num_rows($result) == 0) {
+                        echo "<option>Empty</option>";
+                    }
+                    else {
+                        echo "<option>Select</option>";
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $id = $row['bID'];
+                            echo "<option value='$id'>$id</option>";
+                        }
                     }
                 ?>
             </select>
-            <button class="btn btn-danger" style="padding:2.5px; font-size: 18px;">Delete</button>
+            <button class="btn btn-danger" style="padding:4.5px; font-size: 15px;">Delete</button>
         </div>
     </form>
     <br>
@@ -71,7 +76,7 @@
             <input class="form-control" id="publisher" name="publisher" placeholder="Publisher">
 
             <label for="pubdate">Publish Date</label>
-            <input class="form-control" id="pubdate" name="pubdate" type="date" value="2021-05-15" min="2000-01-01" max="2021-12-31">
+            <input class="form-control" id="pubdate" name="pubdate" type="date" min="2000-01-01" max="2021-12-31">
 
             <label for="bookPrice">Price</label>
             <input class="form-control" id="bookPrice" name="bookPrice" placeholder="Price($)">

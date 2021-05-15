@@ -77,29 +77,29 @@ else if ($_POST["button"] == "search") {
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>
-<h1 class="text-center"> Search Results </h1>
-<br><br>
-    <div class="container">  
-        <table class="table">
-            <thead>
-                <th scope=“col”>ID</th>
-                <th scope=“col”>Title</th>
-                <th scope=“col”>Language</th>
-                <th scope=“col”>Publisher</th>
-                <th scope=“col”>Publish Date</th>
-                <th scope=“col”>Price</th>
-                <th scope=“col”>Category</th>
-            </thead>
-            <tbody>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>        
+        <a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>                      
+        <h1 class="text-center"> Search Results </h1>
+        <br><br>
+        <div class="container">  
+            <table class="table">
+                <thead>
+                    <th scope=“col”>ID</th>
+                    <th scope=“col”>Title</th>
+                    <th scope=“col”>Language</th>
+                    <th scope=“col”>Publisher</th>
+                    <th scope=“col”>Publish Date</th>
+                    <th scope=“col”>Price</th>
+                    <th scope=“col”>Category</th>
+                </thead>
+                <tbody>
                     <?php                     
                         include "config.php";
                         
@@ -129,8 +129,9 @@ else if ($_POST["button"] == "search") {
                             echo "<tr/>";
                         }                    
                     ?>                  
-            </tbody>            
-        </table>
-    </div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                </tbody>            
+            </table>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

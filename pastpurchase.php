@@ -11,16 +11,21 @@
                     include "config.php";
                     $sql_statement = "SELECT * FROM pastpurchases";
                     $result = mysqli_query($db, $sql_statement);
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                        $pID = $row['pID'];
-                        $pdate = $row['pdate'];
-                        
-                        echo "<tr>";
-                        echo "<th scope=“row”> $pID </th>";
-                        echo "<td> $pdate </td>";
-                        echo "<tr/>";
-                    }                    
+                    if (mysqli_num_rows($result) == 0) {
+                        echo "<th>Empty</th>";
+                    }
+                    else {
+                        while($row = mysqli_fetch_assoc($result))
+                        {
+                            $pID = $row['pID'];
+                            $pdate = $row['pdate'];
+                            
+                            echo "<tr>";
+                            echo "<th scope=“row”> $pID </th>";
+                            echo "<td> $pdate </td>";
+                            echo "<tr/>";
+                        }
+                    }                                        
                 ?>                  
             </tbody>            
         </table>
@@ -31,14 +36,20 @@
                         include "config.php";
                         $sql_statement = "SELECT * FROM pastpurchases";
                         $result = mysqli_query($db, $sql_statement);
-                        while($row = mysqli_fetch_assoc($result)) {
-                            $pID = $row['pID'];
-                            $pdate = $row['pdate'];
-                            echo "<option value='$pID'>$pID</option>";
+                        if (mysqli_num_rows($result) == 0) {
+                            echo "<option>Empty</option>";
                         }
+                        else {
+                            echo "<option>Select</option>";
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $pID = $row['pID'];
+                                $pdate = $row['pdate'];
+                                echo "<option value='$pID'>$pID</option>";
+                            }
+                        }                        
                     ?>
                 </select>
-            <button class="btn btn-danger" style="padding:2.5px; font-size: 18px;">Delete</button>
+            <button class="btn btn-danger" style="padding:4.5px; font-size: 15px;">Delete</button>
             </div>
         </form>
         <br>
@@ -51,7 +62,7 @@
                 </div>                                    
                 <div class="col-xs-6">
                     <label for="pdate">pdate</label>
-                    <input class="form-control" name="pdate" type="date" value="2021-05-15" min="2000-01-01" max="2021-12-31">
+                    <input class="form-control" name="pdate" type="date" min="2000-01-01" max="2021-12-31">
                 </div> 
             </div>                       
         </div>
