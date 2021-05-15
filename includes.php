@@ -1,4 +1,5 @@
 <h1 class="text-center">Includes</h1>
+<hr>
 <style>
 .row {
   margin-left:-5px;

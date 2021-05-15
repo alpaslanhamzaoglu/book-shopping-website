@@ -1,4 +1,5 @@
 <h1 class="text-center">Wishlist</h1>
+<hr>
 <div class="container">
 <style>
 table, th, td,h5 {

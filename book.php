@@ -1,4 +1,5 @@
 <h1 class="text-center">Books</h1>
+<hr>
 <div class="container">
     <table class="table">
         <thead>
