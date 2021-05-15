@@ -8,23 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <table class="table">
-            <thead>
-                <th scope=“col”>suzan</th>
-                <th scope=“col”>erg</th>
-                <th scope=“col”>wrhh</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope=“row”> asdfa </th>
-                    <td>alpaslan</td>
-                    <td>adfsadga</td>                    
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <?php 
+        include "author.php";
+        include "shoppinglist.php";
+    ?>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</html>
