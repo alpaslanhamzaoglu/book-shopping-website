@@ -3,6 +3,7 @@
 
 include "config.php";
 
+
 if ($_POST["button"] == "add") {
     if (isset($_POST['rating']) && isset($_POST['rcomment']) && isset($_POST['uID']) && isset($_POST['bID'])) {
         $rating = $_POST['rating'];
@@ -13,17 +14,18 @@ if ($_POST["button"] == "add") {
         $sql_statement = "INSERT INTO `review`(`rating`, `rcomment`, `uID`, `bID`) VALUES ('$rating','$rcomment','$uID', '$bID')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
 
-        header ("Location: admin.php");
-        }
-    
+    }
 
     else
     {
         echo "The form is not set.";
     }
+
+    header ("Location: admin.php");
+    die();
 }
 
-else {
+else if ($_POST["button"] == "search") {
     if (isset($_POST['rating']) && isset($_POST['rcomment']) && isset($_POST['uID']) && isset($_POST['bID'])) { 
         
         $sql_statement = "SELECT * FROM review WHERE ";

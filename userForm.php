@@ -17,6 +17,7 @@ if ($_POST["button"] == "add") {
             $sql_statement = "INSERT INTO users(upassword, email, uID, name, surname) VALUES('$password', '$email', '$id', '$name', '$surname')";
             $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
             header ("Location: admin.php");
+            die();
         }
 
         else if (!empty($_POST['adminSince']) && empty($_POST['modSince'])) {
@@ -27,6 +28,7 @@ if ($_POST["button"] == "add") {
             $sql_statement = "INSERT INTO `admin`(`uID`, `since`) VALUES ('$id','$date')";
             $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
             header ("Location: admin.php");
+            die();
             
         }
 
@@ -38,6 +40,7 @@ if ($_POST["button"] == "add") {
             $sql_statement = "INSERT INTO `moderators`(`uID`, `since`) VALUES ('$id','$date')";
             $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
             header ("Location: admin.php");
+            die();
             
         }
         else {
@@ -53,6 +56,7 @@ if ($_POST["button"] == "add") {
             $result2 = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
 
             header ("Location: admin.php");
+            die();
         }
     }
 
@@ -128,6 +132,7 @@ else {
                         $result = mysqli_query($db, $sql_statement);
                         if (mysqli_num_rows($result) == 0) {
                             header ("Location: noResults.php");
+                            die();
                         }
                         while($row = mysqli_fetch_assoc($result))
                         {
