@@ -11,45 +11,18 @@
     <div class="container">
         <table class="table">
             <thead>
-                <th scope=â€œcolâ€>abdullah</th>
-				<th scope=â€œcolâ€>id</th>
-                <th scope=â€œcolâ€>name</th>
-                <th scope=â€œcolâ€>age</th>
+                <th scope=“col”>alperen</th>
+                <th scope=“col”>erg</th>
+                <th scope=“col”>wrhh</th>
             </thead>
             <tbody>
                 <tr>
-                    <th scope=â€œrowâ€> asdfa </th>
+                    <th scope=“row”> asdfa </th>
                     <td>alpaslan</td>
                     <td>adfsadga</td>                    
                 </tr>
             </tbody>
-            
         </table>
-        <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
-        <button class="btn btn-danger">delete</button>
-        </div>
-
-        <br>
-        <form>
-    <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">ekle</button>
-    <button type="submit" class="btn btn-secondary">Search</button>
-    </form>
-
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</html>
