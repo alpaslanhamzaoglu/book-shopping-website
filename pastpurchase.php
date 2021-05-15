@@ -1,0 +1,63 @@
+<h1 class="text-center">Past Purchases</h1>
+<hr>
+<div class="container">
+        <table class="table">
+            <thead>
+                <th scope=“col”>pID</th>
+                <th scope=“col”>pdate</th>
+            </thead>
+            <tbody>
+                <?php                     
+                    include "config.php";
+                    $sql_statement = "SELECT * FROM pastpurchases";
+                    $result = mysqli_query($db, $sql_statement);
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        $pID = $row['pID'];
+                        $pdate = $row['pdate'];
+                        
+                        echo "<tr>";
+                        echo "<th scope=“row”> $pID </th>";
+                        echo "<td> $pdate </td>";
+                        echo "<tr/>";
+                    }                    
+                ?>                  
+            </tbody>            
+        </table>
+        <form action="deletePastPurchase.php" method="POST">
+            <div class="dropdown">
+                <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="pID"> Test
+                    <?php 
+                        include "config.php";
+                        $sql_statement = "SELECT * FROM pastpurchases";
+                        $result = mysqli_query($db, $sql_statement);
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $pID = $row['pID'];
+                            $pdate = $row['pdate'];
+                            echo "<option value='$pID'>$pID</option>";
+                        }
+                    ?>
+                </select>
+            <button class="btn btn-danger" style="padding:2.5px; font-size: 18px;">Delete</button>
+            </div>
+        </form>
+        <br>
+    <form action="pastPurchaseForm.php" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="pID">pID</label>
+                    <input type="id" class="form-control" name="pID" placeholder="Number">
+                </div>                                    
+                <div class="col-xs-6">
+                    <label for="pdate">pdate</label>
+                    <input class="form-control" name="pdate" type="date" value="2021-05-15" min="2000-01-01" max="2021-12-31">
+                </div> 
+            </div>                       
+        </div>
+        <br>
+        <button type="submit" name="button" value="add" class="btn btn-primary">Add</button>
+        <button type="submit" name="button" value="search" class="btn btn-secondary">Search</button>
+    </form>
+</div>
+<br>
