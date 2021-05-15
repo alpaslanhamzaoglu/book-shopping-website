@@ -10,6 +10,7 @@
     <body>
         <?php 
             include "book.php";
+            include "wrote.php";
             include "pastpurchase.php";
             include "user.php";
             include "review.php";
