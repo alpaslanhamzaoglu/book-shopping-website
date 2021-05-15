@@ -69,8 +69,7 @@
                         }
                     
                     ?>                  
-            </tbody>
-            
+            </tbody>            
         </table>
         <form action="deleteUser.php" method="POST">
         <div class="dropdown">
@@ -79,13 +78,19 @@
             include "config.php";
             $sql_statement = "SELECT * FROM users";
             $result = mysqli_query($db, $sql_statement);
-            while($row = mysqli_fetch_assoc($result)) {
-                $id = $row['uID'];
-                echo "<option value='$id'>$id</option>";
+            if (mysqli_num_rows($result) == 0) {
+                echo "<option>Empty</option>";
+            }
+            else {
+                echo "<option>Select</option>";
+                while($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['uID'];
+                    echo "<option value='$id'>$id</option>";
+                }
             }
         ?>
         </select>
-        <button class="btn btn-danger" style="padding:2.5px; font-size: 10px;">delete</button>
+            <button class="btn btn-danger" style="padding:4.5px; font-size: 15px;">Delete</button>
         </div>
         </form>
         <br>
@@ -105,10 +110,10 @@
         <input type="email" class="form-control" id="userEmail" name="userEmail" placeholder="Email">
 
         <label for="adminSince">admin since</label>
-        <input class="form-control" id="adminSince" name="adminSince" validate="date" placeholder="YYYY-MM-DD">
+        <input class="form-control" id="adminSince" name="adminSince" type="date" min="2000-01-01" max="2021-12-31">
 
         <label for="modSince">mod since</label>
-        <input class="form-control" id="modSince" name="modSince" validate="date" placeholder="YYYY-MM-DD">
+        <input class="form-control" id="modSince" name="modSince" type="date" min="2000-01-01" max="2021-12-31">
 
         <label for="password">password</label>
         <input class="form-control" id="password" name="password" placeholder="password">

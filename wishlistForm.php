@@ -51,8 +51,8 @@ else if ($_POST["button"] == "search") {
 <div class="container">
         <table class="table">
             <thead>
-                <th scope=“col”>uID</th>
-                <th scope=“col”>bID</th>
+                <th scope="col">uID</th>
+                <th scope="col">bID</th>
             </thead>
             <tbody>
                     <?php 

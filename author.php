@@ -19,7 +19,7 @@
                             $id = $row['aID'];
                             $name = $row['aname'];
                             $surname = $row['asurname'];
-                            $nationality = $row['anationality'];
+                            $nationality = $row['anationalty'];
                             $birthday = $row['abirthday'];
 
 
@@ -42,13 +42,19 @@
             include "config.php";
             $sql_statement = "SELECT * FROM authors";
             $result = mysqli_query($db, $sql_statement);
-            while($row = mysqli_fetch_assoc($result)) {
-                $id = $row['aID'];
-                echo "<option value='$id'>$id</option>";
+            if (mysqli_num_rows($result) == 0) {
+                echo "<option>Empty</option>";
+            }
+            else {
+                echo "<option>Select</option>";
+                while($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['aID'];
+                    echo "<option value='$id'>$id</option>";
+                }
             }
         ?>
         </select>
-        <button class="btn btn-danger" style="padding:2.5px; font-size: 10px;">delete</button>
+        <button class="btn btn-danger" style="padding:4.5px; font-size: 15px;">Delete</button>
     </div>
 </form>
 <br>

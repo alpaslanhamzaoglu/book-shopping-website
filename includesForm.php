@@ -11,9 +11,17 @@ if ($_POST["button"] == "add") {
         $pID = $_POST['pID']; 
         $sql_statement1 = "INSERT INTO `includes_r2`(`uID`, `pID`) VALUES ('$uID', '$pID')";
         $sql_statement2 = "INSERT INTO `includes_r1`(`bID`, `pID`) VALUES ('$bID', '$pID')";
-        $result1 = mysqli_query($db, $sql_statement1)  or die(mysqli_error($db));
+        
+        $sql_statement0 = "SELECT * FROM includes_r2 WHERE includes_r2.pID = $pID";
+        $result0 = mysqli_query($db, $sql_statement0)  or die(mysqli_error($db));
+        if(mysqli_num_rows($result0) == 0)
+        {
+            $sql_statement1 = "INSERT INTO `includes_r2`(`uID`, `pID`) VALUES ('$uID', '$pID')";
+            $result1 = mysqli_query($db, $sql_statement1)  or die(mysqli_error($db));
+        }
+        
+        $sql_statement2 = "INSERT INTO `includes_r1`(`bID`, `pID`) VALUES ('$bID', '$pID')";
         $result2 = mysqli_query($db, $sql_statement2)  or die(mysqli_error($db));
-
     }
 
     else
@@ -60,9 +68,9 @@ else if ($_POST["button"] == "search") {
 <div class="container">
         <table class="table">
             <thead>
-                <th scope=“col”>uID</th>
-                <th scope=“col”>bID</th>
-                <th scope=“col”>pID</th>
+                <th scope="col">uID</th>
+                <th scope="col">bID</th>
+                <th scope="col">pID</th>
             </thead>
             <tbody>
                     <?php 

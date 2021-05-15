@@ -40,7 +40,7 @@
     </table>
     <form action="deleteBook.php" method="POST">
         <div class="dropdown">
-            <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="uID"> Test
+            <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="bID"> Test
                 <?php 
                     include "config.php";
                     $sql_statement = "SELECT * FROM books";

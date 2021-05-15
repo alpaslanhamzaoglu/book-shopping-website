@@ -10,7 +10,7 @@ if ($_POST["button"] == "add") {
         $nationality = $_POST['authorNationality'];
         $birthday = $_POST['authorBirthday'];
 
-        $sql_statement = "INSERT INTO authors(aID, aname, asurname, anationality, abirthday) VALUES('$id', '$name', '$surname', '$nationality', '$birthday')";
+        $sql_statement = "INSERT INTO authors(aID, aname, asurname, anationalty, abirthday) VALUES('$id', '$name', '$surname', '$nationality', '$birthday')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
         header ("Location: admin.php");
         die();
