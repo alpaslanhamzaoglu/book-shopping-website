@@ -58,17 +58,17 @@
         <label for="aID">aID</label>
         <input type="id" class="form-control" name="aID" placeholder="ID">
 
-        <label for="authorName">Name</label>
-        <input class="form-control" name="authorName" placeholder="Name">
+        <label for="aname">Name</label>
+        <input class="form-control" name="aname" placeholder="Name">
 
-        <label for="authorSurname">Surname</label>
-        <input class="form-control" name="authorSurname" placeholder="Surname">
+        <label for="asurname">Surname</label>
+        <input class="form-control" name="asurname" placeholder="Surname">
 
-        <label for="authorNationality">Nationality</label>
-        <input class="form-control" name="authorNationality" placeholder="Nationality">
+        <label for="anationality">Nationality</label>
+        <input class="form-control" name="anationality" placeholder="Nationality">
 
-        <label for="authorBirthday">Birthday</label>
-        <input class="form-control" type="date" name="authorBirthday" placeholder="YYYY-MM-DD">
+        <label for="abirthday">Birthday</label>
+        <input class="form-control" type="date" name="abirthday" placeholder="YYYY-MM-DD">
     </div>
     <button type="submit" name="button" value="add" class="btn btn-primary">Add</button>
     <button type="submit" name="button" value="search" class="btn btn-secondary">Search</button>

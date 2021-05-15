@@ -3,12 +3,12 @@
 include "config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['aID']) && isset($_POST['authorName']) && isset($_POST['authorSurname']) && isset($_POST['authorNationality']) && isset($_POST['authorBirthday'])) {
+    if (isset($_POST['aID']) && isset($_POST['aname']) && isset($_POST['asurname']) && isset($_POST['anationality']) && isset($_POST['abirthday'])) {
         $id = $_POST['aID'];
-        $name = $_POST['authorName'];
-        $surname = $_POST['authorSurname'];
-        $nationality = $_POST['authorNationality'];
-        $birthday = $_POST['authorBirthday'];
+        $name = $_POST['aname'];
+        $surname = $_POST['asurname'];
+        $nationality = $_POST['anationality'];
+        $birthday = $_POST['abirthday'];
 
         $sql_statement = "INSERT INTO authors(aID, aname, asurname, anationality, abirthday) VALUES('$id', '$name', '$surname', '$nationality', '$birthday')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
@@ -22,36 +22,36 @@ if ($_POST["button"] == "add") {
 }
 
 else if ($_POST["button"] == "search"){
-    if (isset($_POST['aID']) && isset($_POST['authorName']) && isset($_POST['authorSurname']) && isset($_POST['authorNationality']) && isset($_POST['authorBirthday'])) { 
+    if (isset($_POST['aID']) && isset($_POST['aname']) && isset($_POST['asurname']) && isset($_POST['anationality']) && isset($_POST['abirthday'])) { 
         
         $sql_statement = "SELECT * FROM authors WHERE ";
         if (!empty($_POST['aID'])) {
             $sql_statement = $sql_statement . " aID = " . "'" . $_POST['aID'] . "'";
         }
-        if (!empty($_POST['authorName'])) {
+        if (!empty($_POST['aname'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
             $sql_statement = $sql_statement . " aname = " . $_POST['authorName'];
         }
-        if (!empty($_POST['authorSurname'])) {
+        if (!empty($_POST['asurname'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " asurname = " . "'" . $_POST['authorSurname'] . "'";
+            $sql_statement = $sql_statement . " asurname = " . "'" . $_POST['asurname'] . "'";
         }
         
-        if (!empty($_POST['authorNationality'])) {
+        if (!empty($_POST['anationality'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " anationality = " . "'" . $_POST['authorNationality'] . "'";
+            $sql_statement = $sql_statement . " anationality = " . "'" . $_POST['anationality'] . "'";
         }
-        if (!empty($_POST['authorBirthday'])) {
+        if (!empty($_POST['abirthday'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " abirthday = " . "'" . $_POST['authorBirthday'] . "'";
+            $sql_statement = $sql_statement . " abirthday = " . "'" . $_POST['abirthday'] . "'";
         }
     }
 
@@ -95,10 +95,10 @@ else if ($_POST["button"] == "search"){
                         while($row = mysqli_fetch_assoc($result))
                         {
                             $id = $row['aID'];
-                            $name = $row['authorName'];
-                            $surname = $row['authorSurname'];
-                            $nationality = $row['authorNationality'];
-                            $birthday = $row['authorBirthday'];
+                            $name = $row['aname'];
+                            $surname = $row['asurname'];
+                            $nationality = $row['anationality'];
+                            $birthday = $row['abirthday'];
 
                             echo "<tr>";
                             echo "<th scope=“row”> $id </th>";
