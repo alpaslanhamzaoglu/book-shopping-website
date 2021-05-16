@@ -38,7 +38,9 @@
                         echo "<option>Select</option>";
                         while($row = mysqli_fetch_assoc($result)) {
                             $aid = $row['aID'];
-                            echo "<option value='$aid'>$aid</option>";
+                            $bid = $row['bID'];
+                            $abID = $aid . '-'.$bid;
+                            echo "<option value='$abID'>$abID</option>";
                         }
                     }
                 ?>
@@ -47,7 +49,7 @@
         </div>
     </form>
     <br>
-    <form action="bookForm.php" method="POST">
+    <form action="wroteForm.php" method="POST">
         <div class="form-group">
 
             <br>

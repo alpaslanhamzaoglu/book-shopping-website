@@ -77,7 +77,7 @@ else if ($_POST["button"] == "search") {
                         
                         $result = mysqli_query($db, $sql_statement);
                         if (mysqli_num_rows($result) == 0) {
-                            header ("Location: noResults.php");
+                            header ("Location: noResults.html");
                         }
                         while($row = mysqli_fetch_assoc($result))
                         {

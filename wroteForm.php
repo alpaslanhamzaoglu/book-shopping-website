@@ -3,11 +3,11 @@
 include "config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle'])) {
-        $title = $_POST['bookTitle'];
-        $langu = $_POST['bookLanguage'];
+    if (isset($_POST['aID']) && isset($_POST['bID'])) {
+        $aid = $_POST['aID'];
+        $bid = $_POST['bID'];
 
-        $sql_statement = "INSERT INTO books(bID, blanguage) VALUES('$id', '$langu')";
+        $sql_statement = "INSERT INTO wrote(aID, bID) VALUES('$aid', '$bid')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
         header ("Location: admin.php");
         die();
@@ -20,22 +20,22 @@ if ($_POST["button"] == "add") {
 }
 
 else if ($_POST["button"] == "search") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle'])) { 
+    if (isset($_POST['aID']) && isset($_POST['bID'])) { 
         
-        $sql_statement = "SELECT * FROM books WHERE ";
+        $sql_statement = "SELECT * FROM wrote WHERE ";
         if (!empty($_POST['bID'])) {
             $sql_statement = $sql_statement . " bID = " . "'" . $_POST['bID'] . "'";
         }
-        if (!empty($_POST['bookTitle'])) {
+        if (!empty($_POST['aID'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " btitle = " . "'" . $_POST['bookTitle'] . "'";
+            $sql_statement = $sql_statement . " aID = " . "'" . $_POST['aID'] . "'";
         }
     }
 
     if (substr($sql_statement,-6) == "WHERE ") { 
-        $sql_statement =  "SELECT * FROM books";
+        $sql_statement =  "SELECT * FROM wrote";
     }
 }
 ?>
@@ -56,8 +56,8 @@ else if ($_POST["button"] == "search") {
         <div class="container">  
             <table class="table">
                 <thead>
-                    <th scope=“col”>ID</th>
-                    <th scope=“col”>Title</th>
+                    <th scope=“col”>aID</th>
+                    <th scope=“col”>bID</th>
                 </thead>
                 <tbody>
                     <?php                     
@@ -65,17 +65,17 @@ else if ($_POST["button"] == "search") {
                         
                         $result = mysqli_query($db, $sql_statement);
                         if (mysqli_num_rows($result) == 0) {
-                            header ("Location: noResults.php");
+                            header ("Location: noResults.html");
                             die();
                         }
                         while($row = mysqli_fetch_assoc($result))
                         {
-                            $title = $row['btitle'];
-                            $langu = $row['blanguage'];
+                            $aid = $row['aID'];
+                            $bid = $row['bID'];
 
                             echo "<tr>";
-                            echo "<th scope=“row”> $id </th>";
-                            echo "<td> $title </td>";
+                            echo "<th scope=“row”> $aid </th>";
+                            echo "<td> $bid </td>";
                             echo "<tr/>";
                         }                    
                     ?>                  
