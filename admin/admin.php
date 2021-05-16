@@ -9,15 +9,15 @@
     </head>
     <body>
         <?php 
-            include "book.php";
-            include "wrote.php";
-            include "pastpurchase.php";
-            include "user.php";
-            include "review.php";
-            include "author.php";
-            include "shoppinglist.php";
-            include "wishlist.php";
-            include "includes.php";
+            include "book/book.php";
+            include "wrote/wrote.php";
+            include "pastpurchase/pastpurchase.php";
+            include "user/user.php";
+            include "review/review.php";
+            include "author/author.php";
+            include "shoppinglist/shoppinglist.php";
+            include "wishlist/wishlist.php";
+            include "includes/includes.php";
         ?>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
