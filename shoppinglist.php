@@ -29,7 +29,7 @@
         </table>
         <form action="deleteShoppinglist.php" method="POST">
             <div class="dropdown">
-                <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="bID"> Test
+                <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="uIDbID"> Test
                     <?php 
                         include "config.php";
                         $sql_statement = "SELECT * FROM shoppinglist";
@@ -43,7 +43,7 @@
 
                                 $uID = $row['uID'];
                                 $bID = $row['bID'];
-                                $uIDbID = $uID."&".$bID;
+                                $uIDbID = $uID."-".$bID;
                                 echo "<option value='$uIDbID'>$uIDbID</option>";
                             }
                         }

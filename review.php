@@ -38,7 +38,7 @@
         </table>
         <form action="deleteReview.php" method="POST">
         <div class="dropdown">
-        <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="rcomment"> Test
+        <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="uIDbID"> Test
         <?php 
             include "config.php";
             $sql_statement = "SELECT * FROM review";

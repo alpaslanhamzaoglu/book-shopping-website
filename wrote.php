@@ -26,7 +26,7 @@
     </table>
     <form action="deleteWrote.php" method="POST">
         <div class="dropdown">
-            <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="ab"> Test
+            <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="abID"> Test
                 <?php 
                     include "config.php";
                     $sql_statement = "SELECT * FROM wrote";
@@ -39,7 +39,7 @@
                         while($row = mysqli_fetch_assoc($result)) {
                             $aid = $row['aID'];
                             $bid = $row['bID'];
-                            $abID = $aid . '-'.$bid;
+                            $abID = $aid . "-".$bid;
                             echo "<option value='$abID'>$abID</option>";
                         }
                     }

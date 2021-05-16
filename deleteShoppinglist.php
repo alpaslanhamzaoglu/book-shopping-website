@@ -4,7 +4,7 @@
     if(!empty($_POST['uIDbID'])) {
 
 
-    	$selected = explode("&",$_POST["uIDbID"]);
+    	$selected = explode("-",$_POST["uIDbID"]);
         $sUser = $selected[0];
         $sBook = $selected[1];
         $sql_statement = "DELETE FROM shoppinglist WHERE uID ='" . $sUser ."'". " AND " ."bID ='".$sBook. "'";

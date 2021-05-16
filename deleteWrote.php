@@ -1,7 +1,7 @@
 <?php
     include "config.php";
     
-    if(!empty($_POST['abID'])) {
+    if(!empty($_POST["abID"])) {
         $selected = explode("-",$_POST["abID"]);
         $selectedAut = $selected[0];
         $selectedBook = $selected[1];
