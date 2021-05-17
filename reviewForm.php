@@ -3,7 +3,6 @@
 
 include "config.php";
 
-
 if ($_POST["button"] == "add") {
     if (isset($_POST['rating']) && isset($_POST['rcomment']) && isset($_POST['uID']) && isset($_POST['bID'])) {
         $rating = $_POST['rating'];
@@ -29,6 +28,7 @@ else if ($_POST["button"] == "search") {
     if (isset($_POST['rating']) && isset($_POST['rcomment']) && isset($_POST['uID']) && isset($_POST['bID'])) { 
         
         $sql_statement = "SELECT * FROM review WHERE ";
+
         if (!empty($_POST['rating'])) {
             $sql_statement = $sql_statement . " rating = " . "'" . $_POST['rating'] . "'";
         }
@@ -38,13 +38,13 @@ else if ($_POST["button"] == "search") {
             }
             $sql_statement = $sql_statement . " rcomment = " . "'" . $_POST['rcomment'] . "'";
         }
-        if (!empty($_POST['uID'])) {
+        if (!($_POST['uID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
             $sql_statement = $sql_statement . " uID = " . $_POST['uID'];
         }
-        if (!empty($_POST['bID'])) {
+        if (!($_POST['bID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
@@ -56,10 +56,8 @@ else if ($_POST["button"] == "search") {
         $sql_statement =  "SELECT * FROM review";
     }
 }
-
-
 ?>
-
+<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>                      
 <h1 class="text-center">Search Results</h1>
 <hr>
 <div class="container">

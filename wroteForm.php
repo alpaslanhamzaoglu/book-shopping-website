@@ -21,12 +21,13 @@ if ($_POST["button"] == "add") {
 
 else if ($_POST["button"] == "search") {
     if (isset($_POST['aID']) && isset($_POST['bID'])) { 
-        
+
         $sql_statement = "SELECT * FROM wrote WHERE ";
-        if (!empty($_POST['bID'])) {
+
+        if (!($_POST['bID'] == "Select")) {
             $sql_statement = $sql_statement . " bID = " . "'" . $_POST['bID'] . "'";
         }
-        if (!empty($_POST['aID'])) {
+        if (!($_POST['aID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }

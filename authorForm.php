@@ -72,6 +72,7 @@ else if ($_POST["button"] == "search"){
     <title>Document</title>
 </head>
 <body>
+<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>  
 <h1 class="text-center"> Search Results </h1>
 <br><br>
     <div class="container">
@@ -95,10 +96,10 @@ else if ($_POST["button"] == "search"){
                         while($row = mysqli_fetch_assoc($result))
                         {
                             $id = $row['aID'];
-                            $name = $row['authorName'];
-                            $surname = $row['authorSurname'];
-                            $nationality = $row['authorNationality'];
-                            $birthday = $row['authorBirthday'];
+                            $name = $row['aname'];
+                            $surname = $row['asurname'];
+                            $nationality = $row['anationalty'];
+                            $birthday = $row['abirthday'];
 
                             echo "<tr>";
                             echo "<th scope=“row”> $id </th>";

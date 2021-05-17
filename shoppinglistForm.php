@@ -29,13 +29,13 @@ else if ($_POST["button"] == "search") {
         if (!empty($_POST['amount'])) {
             $sql_statement = $sql_statement . " amount = " . "'" . $_POST['amount'] . "'";
         }
-        if (!empty($_POST['uID'])) {
+        if (!($_POST['uID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
             $sql_statement = $sql_statement . " uID = " . $_POST['uID'];
         }
-        if (!empty($_POST['bID'])) {
+        if (!($_POST['bID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
@@ -47,7 +47,7 @@ else if ($_POST["button"] == "search") {
     }
 }
 ?>
-
+<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>  
 <h1 class="text-center">Search Results</h1>
 <hr>
 <div class="container">
