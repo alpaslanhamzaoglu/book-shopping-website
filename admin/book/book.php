@@ -39,7 +39,7 @@
             ?>                  
         </tbody>        
     </table>
-    <form action="deleteBook.php" method="POST">
+    <form action="book/deleteBook.php" method="POST">
         <div class="dropdown">
             <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="bID"> Test
                 <?php 
@@ -62,7 +62,7 @@
         </div>
     </form>
     <br>
-    <form action="bookForm.php" method="POST">
+    <form action="book/bookForm.php" method="POST">
         <div class="form-group">
             <label for="bID">bID</label>
             <input type="id" class="form-control" name="bID" placeholder="ID">

@@ -1,5 +1,5 @@
 <?php
-    include "config.php";
+    include "../config.php";
     if(!empty($_POST['bID'])) {
         $selected = $_POST['bID'];
         $sql_statement = "DELETE FROM books WHERE bID ='" . $selected . "'";
