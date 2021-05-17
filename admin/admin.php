@@ -13,6 +13,8 @@
         </style>
     </head>
     <body>
+    <a href="http://localhost/cs306-project-step-4/index.html" class="btn btn-primary btn-lg active" role="button"
+        aria-pressed="true">Index</a>
         <?php 
             include "book/book.php";
             include "wrote/wrote.php";
