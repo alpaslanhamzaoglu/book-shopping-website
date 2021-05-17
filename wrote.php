@@ -24,7 +24,7 @@
             ?>                  
         </tbody>        
     </table>
-    <form action="wrote/deleteWrote.php" method="POST">
+    <form action="deleteWrote.php" method="POST">
         <div class="dropdown">
             <select class=" dropdown btn btn-primary dropdown-toggle " type="button" data-toggle="dropdown" name="abID"> Test
                 <?php 
@@ -49,7 +49,7 @@
         </div>
     </form>
     <br>
-    <form action="wrote/wroteForm.php" method="POST">
+    <form action="wroteForm.php" method="POST">
         <div class="form-group">
 
             <br>
