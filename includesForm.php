@@ -37,17 +37,17 @@ else if ($_POST["button"] == "search") {
     if (isset($_POST['uID']) && isset($_POST['bID']) && isset($_POST['pID'])) { 
         
         $sql_statement = "SELECT * FROM includes_r1 JOIN includes_r2 ON includes_r1.pID=includes_r2.pID WHERE ";
-        if (!empty($_POST['bID'])) {
+        if (!($_POST['bID'] == "Select")) {
             $sql_statement = $sql_statement . " bID = " . "'" . $_POST['bID'] . "'";
         }
-        if (!empty($_POST['uID'])) {
+        if (!($_POST['uID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
             $sql_statement = $sql_statement . " uID = " . "'" . $_POST['uID'] . "'";
         }
 
-         if (!empty($_POST['pID'])) {
+         if (!($_POST['pID'] == "Select")) {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
@@ -62,7 +62,7 @@ else if ($_POST["button"] == "search") {
 
 
 ?>
-
+<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>
 <h1 class="text-center">Search Results</h1>
 <hr>
 <div class="container">

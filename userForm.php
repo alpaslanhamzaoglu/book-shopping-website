@@ -111,6 +111,7 @@ else {
     <title>Document</title>
 </head>
 <body>
+<a href="http://localhost/cs306-project-step-4/admin.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go Back</a>                      
 <h1 class="text-center"> Search Results </h1>
 <br><br>
     <div class="container">
