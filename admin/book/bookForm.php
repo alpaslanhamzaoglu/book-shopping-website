@@ -3,7 +3,7 @@
 include "../config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blinks'])) {
+    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blink'])) {
         $title = $_POST['bookTitle'];
         $langu = $_POST['bookLanguage'];
         $id = $_POST['bID'];
@@ -11,7 +11,7 @@ if ($_POST["button"] == "add") {
         $pubdat = $_POST['pubdate'];
         $price = $_POST['bookPrice'];
         $cate = $_POST['category'];
-        $blink = $_POST['blinks'];
+        $blink = $_POST['blink'];
 
         $sql_statement = "INSERT INTO books(bID, blanguage, btitle, bpublisher, publishDate, bprice, bcategory, blinks) VALUES('$id', '$langu', '$title', '$pub', '$pubdat', '$price', '$cate', '$blink')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
@@ -26,7 +26,7 @@ if ($_POST["button"] == "add") {
 }
 
 else if ($_POST["button"] == "search") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blinks'])) { 
+    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blink'])) { 
         
         $sql_statement = "SELECT * FROM books WHERE ";
         if (!empty($_POST['bID'])) {
