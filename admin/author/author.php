@@ -20,7 +20,7 @@
                             $id = $row['aID'];
                             $name = $row['aname'];
                             $surname = $row['asurname'];
-                            $nationality = $row['anationalty'];
+                            $nationality = $row['anationality'];
                             $birthday = $row['abirthday'];
 
 
