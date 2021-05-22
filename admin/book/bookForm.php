@@ -3,7 +3,7 @@
 include "../config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category'])) {
+    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blinks'])) {
         $title = $_POST['bookTitle'];
         $langu = $_POST['bookLanguage'];
         $id = $_POST['bID'];
@@ -11,8 +11,9 @@ if ($_POST["button"] == "add") {
         $pubdat = $_POST['pubdate'];
         $price = $_POST['bookPrice'];
         $cate = $_POST['category'];
+        $blink = $_POST['blinks'];
 
-        $sql_statement = "INSERT INTO books(bID, blanguage, btitle, bpublisher, publishDate, bprice, bcategory) VALUES('$id', '$langu', '$title', '$pub', '$pubdat', '$price', '$cate')";
+        $sql_statement = "INSERT INTO books(bID, blanguage, btitle, bpublisher, publishDate, bprice, bcategory, blinks) VALUES('$id', '$langu', '$title', '$pub', '$pubdat', '$price', '$cate', '$blink')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
         header ("Location: ../admin.php");
         die();
@@ -25,7 +26,7 @@ if ($_POST["button"] == "add") {
 }
 
 else if ($_POST["button"] == "search") {
-    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category'])) { 
+    if (isset($_POST['bID']) && isset($_POST['bookTitle']) && isset($_POST['bookLanguage']) && isset($_POST['publisher']) && isset($_POST['pubdate']) && isset($_POST['bookPrice']) && isset($_POST['category']) && isset($_POST['blinks'])) { 
         
         $sql_statement = "SELECT * FROM books WHERE ";
         if (!empty($_POST['bID'])) {
@@ -67,6 +68,12 @@ else if ($_POST["button"] == "search") {
             }
             $sql_statement = $sql_statement . " bcategory = " . "'" . $_POST['category'] . "'";
         }
+        if (!empty($_POST['blink'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " blinks = " . "'" . $_POST['blink'] . "'";
+        }
     }
 
     if (substr($sql_statement,-6) == "WHERE ") { 
@@ -98,6 +105,7 @@ else if ($_POST["button"] == "search") {
                     <th scope=“col”>Publish Date</th>
                     <th scope=“col”>Price</th>
                     <th scope=“col”>Category</th>
+                    <th scope=“col”>Book Image Links</th>
                 </thead>
                 <tbody>
                     <?php                     
@@ -117,6 +125,7 @@ else if ($_POST["button"] == "search") {
                             $pubdat = $row['publishDate'];
                             $price = $row['bprice'];
                             $cate = $row['bcategory'];
+                            $blink = $row['blinks'];
 
                             echo "<tr>";
                             echo "<th scope=“row”> $id </th>";
@@ -126,6 +135,7 @@ else if ($_POST["button"] == "search") {
                             echo "<td> $pubdat </td>";
                             echo "<td> $price </td>";
                             echo "<td> $cate </td>";
+                            echo "<td> $blink </td>";
                             echo "<tr/>";
                         }                    
                     ?>                  

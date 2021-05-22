@@ -10,6 +10,7 @@
             <th scope=“col”>Publish Date</th>
             <th scope=“col”>Price</th>
             <th scope=“col”>Category</th>
+            <th scope=“col”>Book Image Links</th>
         </thead>
         <tbody>
             <?php                     
@@ -25,6 +26,7 @@
                     $pubdate = $row['publishDate'];
                     $price = $row['bprice'];
                     $category = $row['bcategory'];
+                    $blink = $row['blinks'];
 
                     echo "<tr>";
                     echo "<th scope=“row”> $id </th>";
@@ -34,6 +36,7 @@
                     echo "<td> $pubdate </td>";
                     echo "<td> $price </td>";
                     echo "<td> $category </td>";
+                    echo "<td> $blink </td>";
                     echo "<tr/>";
                 }            
             ?>                  
@@ -84,6 +87,9 @@
 
             <label for="category">Category</label>
             <input class="form-control" id="category" name="category" placeholder="Category">
+
+            <label for="blink">BookLinks</label>
+            <input class="form-control" id="blink" name="blink" placeholder="Book Image Links">
         </div>
         <button type="submit" name="button" value="add" class="btn btn-primary">Add</button>
         <button type="submit" name="button" value="search" class="btn btn-secondary">Search</button>
