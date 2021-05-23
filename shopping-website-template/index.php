@@ -33,11 +33,11 @@
                         </div></a>
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
-                                <li class='active'><a href="index.html">Home</a></li>
+                                <li class='active'><a href="index.php">Home</a></li>
 
-                                <li><a href="products.html">Products</a></li>
+                                <li><a href="products.php">Products</a></li>
 
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="checkout.php">Checkout</a></li>
 
                                 <li>
                                     <a href="#">About</a>
@@ -216,7 +216,7 @@
                                 <p>Vestibulum id est eu felis vulputate hendrerit. Suspendisse dapibus turpis in dui pulvinar imperdiet. Nunc consectetur.</p>
 
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="product-details.php">View More</a>
                                 </div>
                             </div>
                         </div>
