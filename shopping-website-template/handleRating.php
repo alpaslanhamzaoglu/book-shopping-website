@@ -3,7 +3,7 @@
     $bID = $_POST['button'];
     if(!empty($_POST['comment']))
     {
-        $uID = 2;
+        $uID = 31;
         $comment = $_POST['comment'];
         $rating = $_POST['rating'];
         $sql_statement = "SELECT * FROM review WHERE uID = '$uID' AND bID = '$bID'";

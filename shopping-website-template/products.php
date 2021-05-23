@@ -35,7 +35,7 @@
                         echo "<div class=\"col-md-4 col-sm-6 col-xs-12\">
                             <div class=\"featured-item\">
                                 <div class=\"thumb\">
-                                    <img src=\"$blink\" alt=\"\">
+                                    <img src=\"$blink\" alt=\"\" width = 640 height = 480>
                                 </div>
                                 <div class=\"down-content\">
                                     <h4>$title.</h4>

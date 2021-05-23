@@ -25,7 +25,7 @@
                     $sql_statement = "SELECT * FROM authors a1 WHERE a1.aID = (SELECT aID FROM wrote w WHERE w.bID = '$id')";
                     $result = mysqli_query($db, $sql_statement);
                     $row = mysqli_fetch_assoc($result);
-                    $name = $row['anam'];
+                    $name = $row['aname'];
                     $surname = $row['asurname']; 
 
                     echo "
