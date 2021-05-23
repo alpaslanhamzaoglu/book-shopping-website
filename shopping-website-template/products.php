@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php include 'header.php'?> 
-    <section class="banner banner-secondary" id="top" style="background-image: url(img/banner-image-1-1920x300.jpg);">
+    <section class="banner banner-secondary" id="top" style="background-image: url(img/26102.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -45,7 +45,7 @@
                                     <p>$category</p>
 
                                     <div class=\"text-button\">
-                                        <a href=\"product-details.html\">View More</a>
+                                        <a href=\"product-details.php?book=$id\">View More</a>
                                     </div>
                                 </div>
                             </div>
