@@ -3,7 +3,7 @@
 <div class="container">
         <table class="table">
             <thead>
-                <th scope=“col”>rating</th>
+                <th scope=“col”>rating(1 - 10, 0 = didn't give rating)</th>
                 <th scope=“col”>rcomment</th>
                 <th scope=“col”>uID</th>
                 <th scope=“col”>bID</th>
@@ -65,7 +65,7 @@
     <div class="form-group">
 
         <label for="rating">rating</label>
-        <input type="id" class="form-control" name="rating" placeholder="5">
+        <input type="number" class="form-control" name="rating" placeholder="1-10" min="1" max="10">
 
         <label for="rcomment">comment</label>
         <input type="rcomment" class="form-control" name="rcomment" placeholder="Good">

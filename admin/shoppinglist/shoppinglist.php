@@ -57,7 +57,7 @@
     <form action="shoppinglist/shoppinglistForm.php" method="POST">
         <div class="form-group">   
             <label for="amount">amount</label>
-            <input type="id" class="form-control" name="amount" placeholder="amount">
+            <input type="number" class="form-control" name="amount" placeholder="amount" min="1">
 
             <label for="uID">uID</label>
             <br>
