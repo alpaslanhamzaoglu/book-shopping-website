@@ -8,7 +8,7 @@
             <th scope=“col”>Language</th>
             <th scope=“col”>Publisher</th>
             <th scope=“col”>Publish Date</th>
-            <th scope=“col”>Price</th>
+            <th scope=“col”>Price($)</th>
             <th scope=“col”>Category</th>
             <th scope=“col”>Book Image Links</th>
         </thead>
@@ -80,9 +80,9 @@
             <input class="form-control" id="publisher" name="publisher" placeholder="Publisher">
 
             <label for="pubdate">Publish Date</label>
-            <input class="form-control" id="pubdate" name="pubdate" type="date" min="2000-01-01" max="2021-12-31">
+            <input class="form-control" id="pubdate" name="pubdate" type="date" max="2021-12-31">
 
-            <label for="bookPrice">Price</label>
+            <label for="bookPrice">Price($)</label>
             <input class="form-control" id="bookPrice" name="bookPrice" placeholder="Price($)">
 
             <label for="category">Category</label>
