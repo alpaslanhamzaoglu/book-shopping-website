@@ -4,7 +4,7 @@
                 <div class="col-md-5">
                     <div class="about-veno">
                         <div class="logo">
-                            <img src="img/footer_logo.png" alt="Venue Logo">
+                            <img src="img/footer_logo-update.png" alt="Venue Logo">
                         </div>
                         <p>This is Book Crave. A CS306 Database Systems course project by Team 4</p>
                         <ul class="social-icons">

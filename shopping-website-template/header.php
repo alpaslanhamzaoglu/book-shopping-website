@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Book Crave</title>
+    <title>BookCrave</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
                         <button id="primary-nav-button" type="button">Menu</button>
                         <a href="index.php">
                             <div class="logo">
-                                <img src="img/logo.png" alt="Venue Logo">
+                                <img src="img/logo-update.png" alt="Venue Logo">
                             </div>
                         </a>
                         <nav id="primary-nav" class="dropdown cf">
@@ -37,7 +37,7 @@
 
                                 <li class='active'><a href="products.php">Books</a></li>
 
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="checkout.php">Checkout</a></li>
 
                                 <li>
                                     <a href="#">About</a>
@@ -45,7 +45,7 @@
                                         <li><a href="about-us.html">About Us</a></li>
                                         <li><a href="blog.html">Blog</a></li>
                                         <li><a href="testimonials.html">Testimonials</a></li>
-                                        <li><a href="terms.html">Terms</a></li>
+                                        <li><a href="http://localhost/cs306-project-step-4/admin/admin.php">Admin</a></li>
                                     </ul>
                                 </li>
 
