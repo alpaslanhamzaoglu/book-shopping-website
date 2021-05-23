@@ -3,14 +3,12 @@
 include "../config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['pID']) && isset($_POST['pdate'])) {
+    if (isset($_POST['pID']) && isset($_POST['pdate']) && isset($_POST['paddress'])) {
         $pID = $_POST['pID'];
         $pdate = $_POST['pdate'];
 
-        $sql_statement = "INSERT INTO `pastpurchases`(`pID`, `pdate`) VALUES ('$pID','$pdate')";
+        $sql_statement = "INSERT INTO `pastpurchases`(`pID`, `pdate`, `paddress`) VALUES ('$pID','$pdate','$paddress')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
-
-        
     }
     else
     {
@@ -21,7 +19,7 @@ if ($_POST["button"] == "add") {
 }
 
 else if ($_POST["button"] == "search") {
-    if (isset($_POST['pID']) && isset($_POST['pdate'])) { 
+    if (isset($_POST['pID']) && isset($_POST['pdate']) && isset($_POST['paddress'])) { 
         
         $sql_statement = "SELECT * FROM pastpurchases WHERE ";
         if (!empty($_POST['pID'])) {
@@ -32,6 +30,12 @@ else if ($_POST["button"] == "search") {
                 $sql_statement = $sql_statement . " AND "; 
             }
             $sql_statement = $sql_statement . " pdate = " . "'" . $_POST['pdate'] . "'";
+        }
+        if (!empty($_POST['paddress'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " paddress = " . "'" . $_POST['paddress'] . "'";
         }
     }
 
@@ -59,6 +63,7 @@ else if ($_POST["button"] == "search") {
                 <thead>
                     <th scope=“col”>pID</th>
                     <th scope=“col”>pdate</th>
+                    <th scope=“col”>paddress</th>
                 </thead>
                 <tbody>
                     <?php             
@@ -72,10 +77,12 @@ else if ($_POST["button"] == "search") {
                         {
                             $pID = $row['pID'];
                             $pdate = $row['pdate'];
+                            $paddress = $row['paddress'];
                             
                             echo "<tr>";
                             echo "<th scope=“row”> $pID </th>";
                             echo "<td> $pdate </td>";
+                            echo "<td> $paddress </td>";
                             echo "<tr/>";
                         }                    
                     ?>                  

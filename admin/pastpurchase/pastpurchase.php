@@ -5,6 +5,7 @@
             <thead>
                 <th scope=“col”>pID</th>
                 <th scope=“col”>pdate</th>
+                <th scope=“col”>paddress</th>
             </thead>
             <tbody>
                 <?php                     
@@ -19,10 +20,12 @@
                         {
                             $pID = $row['pID'];
                             $pdate = $row['pdate'];
+                            $paddress = $row['paddress'];
                             
                             echo "<tr>";
                             echo "<th scope=“row”> $pID </th>";
                             echo "<td> $pdate </td>";
+                            echo "<td> $paddress </td>";
                             echo "<tr/>";
                         }
                     }                                        
@@ -44,6 +47,7 @@
                             while($row = mysqli_fetch_assoc($result)) {
                                 $pID = $row['pID'];
                                 $pdate = $row['pdate'];
+                                $paddress = $row['paddress'];
                                 echo "<option value='$pID'>$pID</option>";
                             }
                         }                        
@@ -63,6 +67,12 @@
                 <div class="col-xs-6">
                     <label for="pdate">pdate</label>
                     <input class="form-control" name="pdate" type="date" min="2000-01-01" max="2021-12-31">
+                </div> 
+            </div>
+            <div>
+                <div class="col-xs-12">
+                    <label for="pID">paddress</label>
+                    <input type="text" class="form-control" name="paddress" placeholder="Address">
                 </div> 
             </div>                       
         </div>
