@@ -4,7 +4,7 @@
     if(!empty($_POST['amount']))
     {
         $bID = $_POST['button'];
-        $uID = 1;
+        $uID = 40;
         $amount = $_POST['amount'];
         $sql_statement = "SELECT * FROM shoppinglist s WHERE s.bID = '$bID' AND s.uID = '$uID'";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));

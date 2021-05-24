@@ -29,8 +29,7 @@
                     <?php
                     
                     include "../admin/config.php";
-                    //WHERE uID = '$uid'
-                    $uid = 33;
+                    $uid = 40;
                     $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
                     $result = mysqli_query($db, $sql_statement);
                     $outtaxprice = 0;        
@@ -47,9 +46,18 @@
                     }
 
                     $tax = (($outtaxprice * 8) / 100);
-                    $total = $outtaxprice + $tax + 5;
-                    $_SESSION['totalprice'] = $total;
+                    
+                    //$_SESSION['totalprice'] = $total;
 
+                    if($outtaxprice == 0)
+                    {
+                         $shipping = 0;
+                    }
+                    else 
+                    {
+                         $shipping = 5;     
+                    }
+                    $total = $outtaxprice + $tax + $shipping;
                     echo
                          "<div class=\"col-lg-4 col-md-5 pull-right\">
                               <ul class=\"list-group\">
@@ -84,7 +92,7 @@
                                              </div>
 
                                              <div class=\"col-xs-6 text-right\">
-                                                  <strong>$ 5</strong>
+                                                  <strong>$ $shipping</strong>
                                              </div>
                                         </div>
                                    </li>
@@ -107,13 +115,43 @@
                          </div>";
                          ?>
                          <div class="col-lg-8 col-md-7">
+                              
+                                   <?php
+                                        include "../admin/config.php";
+                                        $uid = 40;
+                                        $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
+                                        $result = mysqli_query($db, $sql_statement);
+                                        if (mysqli_num_rows($result) != 0) 
+                                        {
+                                             echo "<h3>Shopping List</h3>";
+                                        }
+                                        echo "<tbody>";
+                                        while($row = mysqli_fetch_assoc($result))   
+                                        {
+                                             $uid = $row['uID'];
+                                             $bid = $row['bID'];
+                                             $amount = $row['amount'];
+                                             $sql_statement = "SELECT * FROM books WHERE bID = $bid";
+                                             $result2 = mysqli_query($db, $sql_statement);
+                                             $row2 = mysqli_fetch_assoc($result2);
+                                             $price = $row2['bprice'];
+                                             $title = $row2['btitle'];
+                                             $outtaxprice = $amount * $price;
+                                             echo "<tr>";
+                                             echo "<th scope=“row”> $title - </th>";                                             
+                                             echo "<td> $outtaxprice $</td>";
+                                             echo "<tr/>";
+                                        }
+                                        echo "</tbody>";
+                                   ?>
+                              
                               <form action="checkoutHandler.php" method="POST">
                                    
                                    <div class="row">
                                         <div class="col-sm-12 col-xs-12">
-                                             <p>
+                                             <h4>
                                                   You can enter your address, then you can buy your shopping list.
-                                             </p>
+                                             </h4>
                                         </div>
                                    </div>
 
@@ -121,7 +159,7 @@
                                         <div class="col-sm-12 col-xs-12">
                                              <div class="form-group">
                                                   <label class="control-label">Address:</label>
-                                                  <input type="text" class="form-control" id="address">
+                                                  <input type="text" class="form-control" id="address" name="address">
                                              </div>
                                         </div>                                        
                                    </div>                                   
