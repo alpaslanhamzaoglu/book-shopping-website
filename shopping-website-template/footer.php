@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="index.php"><i class="fa fa-stop"></i>Home</a></li>
+                                    <li><a href="index.html"><i class="fa fa-stop"></i>Home</a></li>
                                     <li><a href="about.html"><i class="fa fa-stop"></i>About</a></li>
                                     <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
                                 </ul>

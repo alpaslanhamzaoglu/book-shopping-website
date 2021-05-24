@@ -106,7 +106,7 @@
                          </div>";
                          ?>
                          <div class="col-lg-8 col-md-7">
-                              <form action="#">
+                              <form action="checkoutHandler.php" method="POST">
                                    
                                    <div class="row">
                                         <div class="col-sm-12 col-xs-12">
@@ -120,7 +120,7 @@
                                         <div class="col-sm-12 col-xs-12">
                                              <div class="form-group">
                                                   <label class="control-label">Address:</label>
-                                                  <input type="text" class="form-control">
+                                                  <input type="text" class="form-control" id="address">
                                              </div>
                                         </div>                                        
                                    </div>                                   
@@ -131,7 +131,7 @@
                                         </div>
 
                                         <div class="blue-button pull-right">
-                                             <a href="congrats.html">Finish</a>
+                                             <button type="submit" name="button" value="finish" class="btn btn-primary">Finish</button>
                                         </div>
                                    </div>
                               </form>

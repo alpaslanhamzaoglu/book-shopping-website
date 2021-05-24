@@ -26,14 +26,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="primary-nav-button" type="button">Menu</button>
-                        <a href="index.php">
+                        <a href="index.html">
                             <div class="logo">
                                 <img src="img/logo-update.png" alt="Venue Logo">
                             </div>
                         </a>
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
-                                <li><a href="index.php">Home</a></li>
+                                <li><a href="index.html">Home</a></li>
 
                                 <li><a href="products.php">Books</a></li>
 
