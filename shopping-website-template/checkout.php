@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-<?php include 'header.php'?> 
+<?php include 'header.php'
+// session_start();
+// if (!isset($_SESSION['email']) && !isset($_SESSION['upassword'])) {
+//       // redirect to your login page
+//       exit();
+// }
+// $uid = $_SESSION['uID'];
+?> 
     <section class="banner banner-secondary" id="top" style="background-image: url(img/26102.jpg);">
         <div class="container">
             <div class="row">
@@ -19,195 +26,104 @@
           <section class="featured-places">
                <div class="container">
                     <div class="row">
-                         <div class="col-lg-4 col-md-5 pull-right">
-                              <ul class="list-group">
-                                   <li class="list-group-item">
-                                        <div class="row">
-                                             <div class="col-xs-6">
+                    <?php
+                    
+                    include "../admin/config.php";
+                    //WHERE uID = '$uid'
+                    $uid = 33;
+                    $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
+                    $result = mysqli_query($db, $sql_statement);
+                    $outtaxprice = 0;        
+                    while($row = mysqli_fetch_assoc($result))   
+                    {
+                         $Uid = $row['uID'];
+                         $Bid = $row['bID'];
+                         $amount = $row['amount'];
+                         $sql_statement = "SELECT * FROM books WHERE bID = $Bid";
+                         $result2 = mysqli_query($db, $sql_statement);
+                         $row2 = mysqli_fetch_assoc($result2);
+                         $price = $row2['bprice'];
+                         $outtaxprice += $amount * $price;
+                    }
+
+                    $tax = (($outtaxprice * 8) / 100);
+                    $total = $outtaxprice + $tax + 5;
+
+                    echo
+                         "<div class=\"col-lg-4 col-md-5 pull-right\">
+                              <ul class=\"list-group\">
+                                   <li class=\"list-group-item\">
+                                        <div class=\"row\">
+                                             <div class=\"col-xs-6\">
                                                   <em>Sub-total</em>
                                              </div>
 
-                                             <div class="col-xs-6 text-right">
-                                                  <strong>$ 128.00</strong>
+                                             <div class=\"col-xs-6 text-right\">
+                                                  <strong>$ $outtaxprice</strong>
                                              </div>
                                         </div>
                                    </li>
 
-                                   <li class="list-group-item">
-                                        <div class="row">
-                                             <div class="col-xs-6">
-                                                  <em>Extra</em>
+                                   <li class=\"list-group-item\">
+                                        <div class=\"row\">
+                                             <div class=\"col-xs-6\">
+                                                  <em>Tax (%8 KDV)</em>
                                              </div>
 
-                                             <div class="col-xs-6 text-right">
-                                                  <strong>$ 0.00</strong>
-                                             </div>
-                                        </div>
-                                   </li>
-
-                                   <li class="list-group-item">
-                                        <div class="row">
-                                             <div class="col-xs-6">
-                                                  <em>Tax</em>
-                                             </div>
-
-                                             <div class="col-xs-6 text-right">
-                                                  <strong>$ 10.00</strong>
+                                             <div class=\"col-xs-6 text-right\">
+                                                  <strong>$ $tax</strong>
                                              </div>
                                         </div>
                                    </li>
 
-                                   <li class="list-group-item">
-                                        <div class="row">
-                                             <div class="col-xs-6">
+                                   <li class=\"list-group-item\">
+                                        <div class=\"row\">
+                                             <div class=\"col-xs-6\">
+                                                  <em>Shipping</em>
+                                             </div>
+
+                                             <div class=\"col-xs-6 text-right\">
+                                                  <strong>$ 5</strong>
+                                             </div>
+                                        </div>
+                                   </li>
+
+                                   
+
+                                   <li class=\"list-group-item\">
+                                        <div class=\"row\">
+                                             <div class=\"col-xs-6\">
                                                   <em>Total</em>
                                              </div>
 
-                                             <div class="col-xs-6 text-right">
-                                                  <strong>$ 138.00</strong>
+                                             <div class=\"col-xs-6 text-right\">
+                                                  <strong>$ $total</strong>
                                              </div>
                                         </div>
                                    </li>
 
-                                   <li class="list-group-item">
-                                        <div class="row">
-                                             <div class="col-xs-6">
-                                                  <em>Deposit</em>
-                                             </div>
-
-                                             <div class="col-xs-6 text-right">
-                                                  <strong>$ 20.00</strong>
-                                             </div>
-                                        </div>
-                                   </li>
                               </ul>
-                         </div>
-
+                         </div>";
+                         ?>
                          <div class="col-lg-8 col-md-7">
                               <form action="#">
+                                   
                                    <div class="row">
-                                        <!-- <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Title:</label>
-                                                  <select class="form-control"
-                                                       data-msg-required="This field is required.">
-                                                       <option value="">-- Choose --</option>
-                                                       <option value="dr">Dr.</option>
-                                                       <option value="miss">Miss</option>
-                                                       <option value="mr">Mr.</option>
-                                                       <option value="mrs">Mrs.</option>
-                                                       <option value="ms">Ms.</option>
-                                                       <option value="other">Other</option>
-                                                       <option value="prof">Prof.</option>
-                                                       <option value="rev">Rev.</option>
-                                                  </select>
-                                             </div>
-                                        </div> -->
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Name:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Surname:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
+                                        <div class="col-sm-12 col-xs-12">
+                                             <p>
+                                                  You can enter your address, then you can buy your shopping list.
+                                             </p>
                                         </div>
                                    </div>
+
                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Email:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                        <!-- <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Phone:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div> -->
-                                   </div>
-                                   <div class="row">
-                                        <div class="col-sm-6 col-xs-12">
+                                        <div class="col-sm-12 col-xs-12">
                                              <div class="form-group">
                                                   <label class="control-label">Address:</label>
                                                   <input type="text" class="form-control">
                                              </div>
-                                        </div>
-                                        <!-- <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Address 2:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div> -->
-                                   </div>
-                                   <!-- <div class="row">
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">City:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">State:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                   </div> -->
-                                   <!-- <div class="row">
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Zip:</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Country:</label>
-                                                  <select class="form-control">
-                                                       <option value="">-- Choose --</option>
-                                                       <option value="">-- Choose --</option>
-                                                       <option value="">-- Choose --</option>
-                                                       <option value="">-- Choose --</option>
-                                                  </select>
-                                             </div>
-                                        </div>
-                                   </div> -->
-
-                                   <!-- <div class="row">
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Payment method</label>
-
-                                                  <select class="form-control">
-                                                       <option value="">-- Choose --</option>
-                                                       <option value="bank">Bank account</option>
-                                                       <option value="cash">Cash</option>
-                                                       <option value="paypal">PayPal</option>
-                                                  </select>
-                                             </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-xs-12">
-                                             <div class="form-group">
-                                                  <label class="control-label">Captcha</label>
-                                                  <input type="text" class="form-control">
-                                             </div>
-                                        </div>
-                                   </div> -->
-
-                                   <!-- <div class="form-group">
-                                        <label class="control-label">
-                                             <input type="checkbox">
-
-                                             I agree with the <a href="terms.html" target="_blank">Terms &amp;
-                                                  Conditions</a>
-                                        </label>
-                                   </div> -->
+                                        </div>                                        
+                                   </div>                                   
 
                                    <div class="clearfix">
                                         <div class="blue-button pull-left">
@@ -215,7 +131,7 @@
                                         </div>
 
                                         <div class="blue-button pull-right">
-                                             <a href="#">Finish</a>
+                                             <a href="congrats.html">Finish</a>
                                         </div>
                                    </div>
                               </form>
