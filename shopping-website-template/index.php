@@ -35,7 +35,7 @@
                             <ul class="dropdown menu">
                                 <li class='active'><a href="index.php">Home</a></li>
 
-                                <li><a href="products.php">Products</a></li>
+                                <li><a href="products.php?category=All">Products</a></li>
 
                                 <li><a href="checkout.php">Checkout</a></li>
 
