@@ -48,6 +48,7 @@
 
                     $tax = (($outtaxprice * 8) / 100);
                     $total = $outtaxprice + $tax + 5;
+                    $_SESSION['totalprice'] = $total;
 
                     echo
                          "<div class=\"col-lg-4 col-md-5 pull-right\">

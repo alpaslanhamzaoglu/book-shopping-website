@@ -4,6 +4,7 @@
         <table class="table">
             <thead>
                 <th scope=“col”>pID</th>
+                <th scope=“col”>totalprice</th>
                 <th scope=“col”>pdate</th>
                 <th scope=“col”>paddress</th>
             </thead>
@@ -19,11 +20,13 @@
                         while($row = mysqli_fetch_assoc($result))
                         {
                             $pID = $row['pID'];
-                            $pdate = $row['pdate'];
+                            $totalprice = $row['totalprice'];
+                            $pdate = $row['pdate'];                            
                             $paddress = $row['paddress'];
                             
                             echo "<tr>";
                             echo "<th scope=“row”> $pID </th>";
+                            echo "<td> $totalprice </td>";
                             echo "<td> $pdate </td>";
                             echo "<td> $paddress </td>";
                             echo "<tr/>";
@@ -46,6 +49,7 @@
                             echo "<option>Select</option>";
                             while($row = mysqli_fetch_assoc($result)) {
                                 $pID = $row['pID'];
+                                $totalprice = $row['totalprice'];
                                 $pdate = $row['pdate'];
                                 $paddress = $row['paddress'];
                                 echo "<option value='$pID'>$pID</option>";
@@ -60,11 +64,15 @@
     <form action="pastpurchase/pastPurchaseForm.php" method="POST">
         <div class="container">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <label for="pID">pID</label>
                     <input type="id" class="form-control" name="pID" placeholder="Number">
-                </div>                                    
-                <div class="col-xs-6">
+                </div>
+                <div class="col-xs-4">
+                    <label for="totalprice">total price</label>
+                    <input class="form-control" name="totalprice" type="number" min="1">
+                </div>                                     
+                <div class="col-xs-4">
                     <label for="pdate">pdate</label>
                     <input class="form-control" name="pdate" type="date" min="2000-01-01" max="2021-12-31">
                 </div> 

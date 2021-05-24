@@ -3,11 +3,13 @@
 include "../config.php";
 
 if ($_POST["button"] == "add") {
-    if (isset($_POST['pID']) && isset($_POST['pdate']) && isset($_POST['paddress'])) {
+    if (isset($_POST['pID']) && isset($_POST['pdate']) && isset($_POST['paddress']) && isset($_POST['totalprice'])) {
         $pID = $_POST['pID'];
         $pdate = $_POST['pdate'];
+        $totalprice = $_POST['totalprice'];
+        $paddress = $_POST['paddress'];
 
-        $sql_statement = "INSERT INTO `pastpurchases`(`pID`, `pdate`, `paddress`) VALUES ('$pID','$pdate','$paddress')";
+        $sql_statement = "INSERT INTO `pastpurchases`(`pID`, `totalprice`, `pdate`, `paddress`) VALUES ('$pID', '$totalprice', '$pdate','$paddress')";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
     }
     else
@@ -24,6 +26,12 @@ else if ($_POST["button"] == "search") {
         $sql_statement = "SELECT * FROM pastpurchases WHERE ";
         if (!empty($_POST['pID'])) {
             $sql_statement = $sql_statement . " pID = " . "'" . $_POST['pID'] . "'";
+        }
+        if (!empty($_POST['totalprice'])) {
+            if (substr($sql_statement,-6) != "WHERE ") {
+                $sql_statement = $sql_statement . " AND "; 
+            }
+            $sql_statement = $sql_statement . " totalprice = " . "'" . $_POST['totalprice'] . "'";
         }
         if (!empty($_POST['pdate'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
@@ -62,6 +70,7 @@ else if ($_POST["button"] == "search") {
             <table class="table">
                 <thead>
                     <th scope=“col”>pID</th>
+                    <th scope=“col”>totalprice</th>
                     <th scope=“col”>pdate</th>
                     <th scope=“col”>paddress</th>
                 </thead>
@@ -76,11 +85,13 @@ else if ($_POST["button"] == "search") {
                         while($row = mysqli_fetch_assoc($result))
                         {
                             $pID = $row['pID'];
+                            $totalprice = $row['totalprice'];
                             $pdate = $row['pdate'];
                             $paddress = $row['paddress'];
                             
                             echo "<tr>";
                             echo "<th scope=“row”> $pID </th>";
+                            echo "<td> $totalprice </td>";
                             echo "<td> $pdate </td>";
                             echo "<td> $paddress </td>";
                             echo "<tr/>";
