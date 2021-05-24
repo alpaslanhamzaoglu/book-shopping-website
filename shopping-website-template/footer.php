@@ -6,7 +6,8 @@
                         <div class="logo">
                             <img src="img/footer_logo-update.png" alt="Venue Logo">
                         </div>
-                        <p>This is Book Crave. A CS306 Database Systems course project by Team 4</p>
+                        <p>This is BookCrave.
+                            <br>A CS306 Database Systems course project by Team E</p>
                         <ul class="social-icons">
                             <li>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -46,8 +47,11 @@
                         </div>
                         <p><i class="fa fa-map-marker"></i> Sabanci University CS306</p>
                         <ul>
-                            <li><span>Phone:</span><a href="#">+1 333 4040 5566</a></li>
-                            <li><span>Email:</span><a href="#">contact@company.com</a></li>
+                        <li><span>Phone:</span><a href="https://g.page/sabanci_universitesi?share">+90 216 483 90
+                                    00</a></li>
+                            <li><span>Email:</span><a
+                                    href="https://g.page/sabanci_universitesi?share">sabanciuniversitesi@hs03.kep.tr</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
