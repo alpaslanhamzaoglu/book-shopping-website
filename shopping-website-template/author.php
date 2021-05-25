@@ -2,7 +2,10 @@
     include '../shopping-website-template/header.php';
     include "config.php";
     $sql_statement = "SELECT * FROM `authors` WHERE aID = ";
-    $author_id = 28;
+    $url = $_SERVER['REQUEST_URI'];
+    $url_components = parse_url($url);
+    parse_str($url_components['query'], $params);
+    $author_id = $params['author_id'];
     $sql_statement = $sql_statement . $author_id;
     $result = mysqli_query($db, $sql_statement);
     while($row = mysqli_fetch_assoc($result)) {
@@ -11,7 +14,6 @@
     $surname = $row['asurname'];
     $email = $row['anationality'];
     }
-
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="userpage.css">
