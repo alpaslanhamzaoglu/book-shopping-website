@@ -13,14 +13,10 @@
   transition: all 0.5s;
 }
 </style>
-<?php include 'header.php'
-// session_start();
-// if (!isset($_SESSION['email']) && !isset($_SESSION['upassword'])) {
-//       // redirect to your login page
-//       exit();
-// }
-// $uid = $_SESSION['uID'];
-?> 
+<?php
+include 'header.php'
+?>
+ 
     <section class="banner banner-secondary" id="top" style="background-image: url(img/26102.jpg);">
         <div class="container">
             <div class="row">
@@ -41,7 +37,14 @@
                     <?php
                     
                     include "../admin/config.php";
-                    $uid = 40;
+                
+                    session_start();
+                    if (!isset($_SESSION['uID'])) {
+                         // redirect to your login page
+                         exit();
+                    }
+                    $uid = $_SESSION['uID'];
+                    //$uid = 40;
                     $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
                     $result = mysqli_query($db, $sql_statement);
                     $outtaxprice = 0;        
@@ -130,7 +133,7 @@
                               
                                    <?php
                                         include "../admin/config.php";
-                                        $uid = 40;
+                                        //$uid = 40;
                                         $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
                                         $result = mysqli_query($db, $sql_statement);  
                                         echo "
