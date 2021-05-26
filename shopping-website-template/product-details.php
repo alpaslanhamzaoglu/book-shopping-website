@@ -6,6 +6,7 @@
             <div class="container">
                <div class="row">
                    <?php
+                    $uID = 40;
                     $url= $_SERVER['REQUEST_URI'];  
                     $url_components = parse_url($url);
                     parse_str($url_components['query'], $params);
@@ -90,7 +91,12 @@
                         </div>
                         <button type=\"submit\" name=\"button\" class= \"btn btn-primary\" value = '$id'> ADD TO CART </button>
                         </form>
-                    </div>";
+                        <br>";
+                    
+                    echo "<form action='/cs306-project/shopping-website-template/addtowishlist.php?bID=" . $id . "&uID=". $uID . "' method='POST'>";
+                    echo  "<button class='btn btn-danger' type='submit'> ADD TO WISHLIST </button>";
+                    echo "</div>"; 
+                    echo "</form>";
                   ?>
                   </div>
                   <br>
