@@ -1,9 +1,15 @@
 <?php
     include '../admin/config.php';
-    $bID = $_POST['button'];
+    session_start();
+    if (!isset($_SESSION['uID'])) {
+        // redirect to your login page
+        exit();
+    }
+    //$uid = $_SESSION['uID'];
     if(!empty($_POST['amount']) && $_POST['amount'] > 0)
     {
-        $uID = 30;
+        $bID = $_POST['button'];
+        $uID = $_SESSION['uID'];
         $amount = $_POST['amount'];
         $sql_statement = "SELECT * FROM shoppinglist s WHERE s.bID = '$bID' AND s.uID = '$uID'";
         $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));

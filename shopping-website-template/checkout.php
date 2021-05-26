@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-
-<?php include 'header.php'
-// session_start();
-// if (!isset($_SESSION['email']) && !isset($_SESSION['upassword'])) {
-//       // redirect to your login page
-//       exit();
-// }
-// $uid = $_SESSION['uID'];
-?> 
+<style>
+     #ozelbut {
+  display: inline-block;
+  background-color: #4883ff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 16px;
+  text-decoration: none;
+  border: 2px solid #4883ff;
+  transition: all 0.5s;
+}
+</style>
+<?php
+include 'header.php'
+?>
+ 
     <section class="banner banner-secondary" id="top" style="background-image: url(img/26102.jpg);">
         <div class="container">
             <div class="row">
@@ -25,11 +33,18 @@
      <main>
           <section class="featured-places">
                <div class="container">
-                    <div class="row">
+                    
                     <?php
                     
                     include "../admin/config.php";
-                    $uid = 40;
+                
+                    session_start();
+                    if (!isset($_SESSION['uID'])) {
+                         // redirect to your login page
+                         exit();
+                    }
+                    $uid = $_SESSION['uID'];
+                    //$uid = 40;
                     $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
                     $result = mysqli_query($db, $sql_statement);
                     $outtaxprice = 0;        
@@ -118,14 +133,17 @@
                               
                                    <?php
                                         include "../admin/config.php";
-                                        $uid = 40;
+                                        //$uid = 40;
                                         $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
-                                        $result = mysqli_query($db, $sql_statement);
-                                        if (mysqli_num_rows($result) != 0) 
-                                        {
-                                             echo "<h3>Shopping List</h3>";
-                                        }
-                                        echo "<tbody>";
+                                        $result = mysqli_query($db, $sql_statement);  
+                                        echo "
+                                        <div class=\"row\">
+                                        <div class=\"container py-5\">
+                                             <div class=\"row text-center text-white mb-5\">
+                                                  <div class=\"col-lg-7 mx-auto\">
+                                                       <h1 class=\"display-4\">Shopping List</h1>
+                                                  </div>
+                                             </div>";                            
                                         while($row = mysqli_fetch_assoc($result))   
                                         {
                                              $uid = $row['uID'];
@@ -136,13 +154,57 @@
                                              $row2 = mysqli_fetch_assoc($result2);
                                              $price = $row2['bprice'];
                                              $title = $row2['btitle'];
+                                             $link = $row2['blinks'];
                                              $outtaxprice = $amount * $price;
-                                             echo "<tr>";
-                                             echo "<th scope=“row”> $title - </th>";                                             
-                                             echo "<td> $outtaxprice $</td>";
-                                             echo "<tr/>";
+
+                                             $sql_statement = "SELECT * FROM wrote WHERE bID = $bid";
+                                             $result3 = mysqli_query($db, $sql_statement);
+                                             $row3 = mysqli_fetch_assoc($result3);
+
+                                             $aid = $row3['aID'];
+
+                                             $sql_statement = "SELECT * FROM authors WHERE aID = $aid";
+                                             $result4 = mysqli_query($db, $sql_statement);
+                                             $row4 = mysqli_fetch_assoc($result4);
+
+                                             $aname = $row4['aname'];
+                                             $asurname = $row4['asurname'];
+                                             echo 
+                                             "
+                                             <div class=\"col\">
+                                                  <div class=\"col-lg-3 mx-auto\">
+                                                       <!-- List group-->
+                                                       <ul class=\"list-group shadow\">
+                                                            <!-- list group item-->
+                                                            <li class=\"list-group-item\">
+                                                                 <!-- Custom content-->
+                                                                 <div class=\"media align-items-lg-center flex-column flex-lg-row p-3\">
+                                                                 <div class=\"media-body order-2 order-lg-1\">
+                                                                      <h4 class=\"mt-0 font-weight-bold mb-2\"> $title </h4>
+                                                                      <h6 class=\"mt-0 font-weight-bold mb-2\"> $aname $asurname </h6>
+                                                                      <div class=\"d-flex align-items-center justify-content-between mt-1\">
+                                                                           <h5 class=\"font-weight-bold my-2\">$ $price X $amount (amount)</h5>                                                                                
+                                                                      </div>
+                                                                 </div>
+                                                                      <img src=\"$link\" alt=\"Generic placeholder image\" width=\"100\" length=\"100\" class=\"ml-lg-5 order-1 order-lg-2\">
+                                                                      
+                                                                      <form action=\"checkoutDelete.php\" method=\"POST\">
+                                                                           <input type=\"hidden\" name=\"bid\" value=\"$bid\" />
+                                                                           <label class=\"control-label\">Amount:</label>
+                                                                           <input type=\"number\" class=\"form-control\" id=\"amount\" name=\"amount\" placeholder=\"Amount\" min=\"1\" max=\"$amount\">
+                                                                           <button type=\"submit\" id=\"ozelbut\">Delete</button>
+                                                                      </form>
+                                                                      
+                                                                 </div> <!-- End -->                                                                 
+                                                            </li> <!-- End -->
+                                                       </ul> <!-- End -->
+                                                  </div>
+                                             </div>";                                        
                                         }
-                                        echo "</tbody>";
+                                        echo " 
+                                             </div>
+                                        </div>";
+                                        
                                    ?>
                               
                               <form action="checkoutHandler.php" method="POST">
@@ -170,7 +232,7 @@
                                         </div>
 
                                         <div class="blue-button pull-right">
-                                             <button type="submit" name="button" value="finish" class="btn btn-primary">Finish</button>
+                                             <button type="submit" name="button" value="finish" id="ozelbut">Finish</button>
                                         </div>
                                    </div>
                               </form>
