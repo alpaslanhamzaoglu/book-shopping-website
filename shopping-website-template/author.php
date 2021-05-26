@@ -1,4 +1,10 @@
 <?php
+
+    session_start();
+    if (!isset($_SESSION['uID'])) {
+        // redirect to your login page
+        exit();
+    }
     include '../shopping-website-template/header.php';
     include "config.php";
     $sql_statement = "SELECT * FROM `authors` WHERE aID = ";
@@ -13,6 +19,7 @@
     $name = $row['aname'];
     $surname = $row['asurname'];
     $email = $row['anationality'];
+    $link = $row['alinks'];
     }
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,12 +30,12 @@
         <!-- Profile widget -->
         <div class="bg-white shadow rounded overflow-hidden" >
             <div class="px-4 pt-0 pb-4 usercover" style=>
-                <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                <div class="media align-items-end profile-head">                    
+                    <div class="profile mr-3"><img src="<?php echo "$link";?>" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
                     <div class="media-body mb-5">
                         <?php
                          echo "<h4 >" . $name . " " . $surname .  "</h4>";
-                        echo '<p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>' . $email . '</p>'; 
+                        echo '<p class="large mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>' . $email . '</p>'; 
                         
                         ?>
                     </div>
