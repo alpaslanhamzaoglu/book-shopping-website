@@ -10,11 +10,16 @@
             body {
                 background-color: #ffffdb;
             }
+            a {
+                margin: 10px 10px;
+            }
         </style>
     </head>
     <body>
+    <div>
     <a href="http://localhost/cs306-project-step-4/shopping-website-template/index.php" class="btn btn-primary btn-lg active" role="button"
-        aria-pressed="true">Index</a>
+        aria-pressed="true">Main Page</a>
+        </div>
         <?php 
             include "book/book.php";
             include "wrote/wrote.php";

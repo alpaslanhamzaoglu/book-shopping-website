@@ -159,7 +159,7 @@ body {
     </div>
 </div>
 </div>
-</div>""
+</div>
 <?php
     include '../shopping-website-template/footer.php';
 ?>

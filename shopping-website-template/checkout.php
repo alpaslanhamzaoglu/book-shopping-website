@@ -19,6 +19,10 @@ if (!isset($_SESSION['uID'])){
   border: 2px solid #4883ff;
   transition: all 0.5s;
 }
+
+#ozeldiv {
+     margin: 100px 0px 0px 0px;
+}
 </style>
 <?php
 include 'header.php'
@@ -76,7 +80,7 @@ include 'header.php'
                          $shipping = 5;     
                     }
                     $total = $outtaxprice + $tax + $shipping;
-                    //$_SESSION['totalprice'] = $total;
+                    $_SESSION['totalprice'] = $total;
                     echo
                          "<div class=\"col-lg-4 col-md-5 pull-right\">
                               <ul class=\"list-group\">
@@ -142,7 +146,7 @@ include 'header.php'
                                         $result = mysqli_query($db, $sql_statement);  
                                         echo "
                                         <div class=\"row\">
-                                        <div class=\"container py-5\">
+                                        <div class=\"container py-3\" id=\"ozeldiv\">
                                              <div class=\"row text-center text-white mb-5\">
                                                   <div class=\"col-lg-7 mx-auto\">
                                                        <h1 class=\"display-4\">Shopping List</h1>
@@ -183,7 +187,7 @@ include 'header.php'
                                                             <li class=\"list-group-item\">
                                                                  <!-- Custom content-->
                                                                  <div class=\"media align-items-lg-center flex-column flex-lg-row p-3\">
-                                                                 <div class=\"media-body order-2 order-lg-1\">
+                                                                 <div class=\"media-body order-4 order-lg-1\">
                                                                       <h4 class=\"mt-0 font-weight-bold mb-2\"> $title </h4>
                                                                       <h6 class=\"mt-0 font-weight-bold mb-2\"> $aname $asurname </h6>
                                                                       <div class=\"d-flex align-items-center justify-content-between mt-1\">
