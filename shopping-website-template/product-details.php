@@ -6,6 +6,7 @@
             <div class="container">
                <div class="row">
                    <?php
+                    $uID = 40;
                     $url= $_SERVER['REQUEST_URI'];  
                     $url_components = parse_url($url);
                     parse_str($url_components['query'], $params);
@@ -25,6 +26,7 @@
                     $sql_statement = "SELECT * FROM authors a1 WHERE a1.aID = (SELECT aID FROM wrote w WHERE w.bID = '$id')";
                     $result = mysqli_query($db, $sql_statement);
                     $row = mysqli_fetch_assoc($result);
+                    $authorid = $row['aID'];
                     $name = $row['aname'];
                     $surname = $row['asurname']; 
 
@@ -53,7 +55,7 @@
                         <br>
                         <divt class = \"row\">
                             <divt class=\"col-md-6 col-xs-12 \">
-                                <p class = 'lead'>Author: $name $surname</p>
+                               <p  class = 'lead'> <a href = authors.php?author_id=$authorid>Author: $name $surname</a> </p>
                             </divt>
                         </divt>
                         <divt class = \"row\">
@@ -90,7 +92,12 @@
                         </div>
                         <button type=\"submit\" name=\"button\" class= \"btn btn-primary\" value = '$id'> ADD TO CART </button>
                         </form>
-                    </div>";
+                        <br>";
+                    
+                    echo "<form action='/cs306-project/shopping-website-template/addtowishlist.php?bID=" . $id . "&uID=". $uID . "' method='POST'>";
+                    echo  "<button class='btn btn-danger' type='submit'> ADD TO WISHLIST </button>";
+                    echo "</div>"; 
+                    echo "</form>";
                   ?>
                   </div>
                   <br>
@@ -152,7 +159,7 @@
                                                         {
                                                             echo "<span class=\"fa fa-star checked\"></span>";
                                                         }
-                                                        for($x = 0; $x <5- $rating;$x++)
+                                                        for($x = 0; $x <10- $rating;$x++)
                                                         {
                                                             echo "<span class=\"fa fa-star\"></span>";
                                                         }
@@ -189,11 +196,11 @@
                                                 <option value='3'>3</option>
                                                 <option value='4'>4</option>
                                                 <option value='5'>5</option>
-                                                <option value='5'>6</option>
-                                                <option value='5'>7</option>
-                                                <option value='5'>8</option>
-                                                <option value='5'>9</option>
-                                                <option value='5'>10</option>
+                                                <option value='6'>6</option>
+                                                <option value='7'>7</option>
+                                                <option value='8'>8</option>
+                                                <option value='9'>9</option>
+                                                <option value='10'>10</option>
                                             </select>
                                         </div>
                                         <div class = "col-sm-2">
