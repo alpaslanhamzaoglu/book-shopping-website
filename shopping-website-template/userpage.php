@@ -136,19 +136,27 @@ body {
                 </div>
             </form>
         </div>
+        
         <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="col-md-12"><label class="labels">Add to wishlist</label><input type="text" class="form-control" placeholder="Pride and Prejudice" value=""></div> <br>
-                <div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Add</span></div><br>
-
-                <div class="col-md-12"><label class="labels">Remove from wishlist</label><input type="text" class="form-control" placeholder="Moby Dick" value=""></div>
-                <div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-minus"></i>&nbsp;Remove</span></div><br>
+            <h4 class="text-left">Your Wishlist</h4>
+            <br>
+                <?php
+                     $sql_statement = "SELECT * FROM `wishlist`, `books` WHERE wishlist.bID = books.bID AND uID =" . $user_id;
+                     $result = mysqli_query($db, $sql_statement);
+                     while($row = mysqli_fetch_assoc($result)) {
+                         echo '<div class="col-md-12"><label class="labels">' . $row['btitle'] . '</label></div>';
+                         echo '<a href="/cs306-project/shopping-website-template/removefromwishlist.php?bID='. $row['bID'] . '&uID='. $user_id .'"><div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-minus" href="/shopping-website-template/removefromwishlist.php"></i>&nbsp;Remove</span></div><br></a>';
+                     }
+                ?>  
+                
+                
             </div>
         </div>
     </div>
 </div>
 </div>
-</div>
+</div>""
 <?php
     include '../shopping-website-template/footer.php';
 ?>
