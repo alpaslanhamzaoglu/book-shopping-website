@@ -10,9 +10,9 @@
                             <br>A CS306 Database Systems course project by Team E</p>
                         <ul class="social-icons">
                             <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.facebook.com/sabanciuniv.edu/"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/sabanciu?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/school/sabanci-university/?originalSubdomain=tr"><i class="fa fa-linkedin"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -41,12 +41,12 @@
                         <div class="footer-heading">
                             <h4>Contact Information</h4>
                         </div>
-                        <p><i class="fa fa-map-marker"></i> Sabanci University CS306</p>
+                        <a href="https://g.page/sabanci_universitesi?share"><i class="fa fa-map-marker"></i> Sabanci University CS306</a>
                         <ul>
-                        <li><span>Phone:</span><a href="https://g.page/sabanci_universitesi?share">+90 216 483 90
+                        <li><span>Phone:</span><a href="https://www.sabanciuniv.edu/tr/telefon-ve-adresler">+90 216 483 90
                                     00</a></li>
                             <li><span>Email:</span><a
-                                    href="https://g.page/sabanci_universitesi?share">sabanciuniversitesi@hs03.kep.tr</a>
+                                    href="https://www.sabanciuniv.edu/tr">sr@sabanciuniv.edu</a>
                             </li>
                         </ul>
                     </div>
