@@ -25,16 +25,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <ul>
-                                    <li><a href="index.html"><i class="fa fa-stop"></i>Home</a></li>
-                                    <li><a href="about.html"><i class="fa fa-stop"></i>About</a></li>
-                                    <li><a href="contact.html"><i class="fa fa-stop"></i>Contact Us</a></li>
+                                    <li><a href="index.php"><i class="fa fa-stop"></i>Home</a></li>                                   
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul>
                                     <li><a href="products.php"><i class="fa fa-stop"></i>Books</a></li>
-                                    <li><a href="testimonials.html"><i class="fa fa-stop"></i>Testimonials</a></li>
-                                    <li><a href="blog.html"><i class="fa fa-stop"></i>Blog</a></li>
                                 </ul>
                             </div>
                         </div>

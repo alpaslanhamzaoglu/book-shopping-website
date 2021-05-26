@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (!isset($_SESSION['uID'])){
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <style>
@@ -38,11 +45,7 @@ include 'header.php'
                     
                     include "../admin/config.php";
                 
-                    session_start();
-                    if (!isset($_SESSION['uID'])) {
-                         // redirect to your login page
-                         exit();
-                    }
+
                     $uid = $_SESSION['uID'];
                     //$uid = 40;
                     $sql_statement = "SELECT * FROM shoppinglist WHERE uID = '$uid'";
@@ -62,7 +65,7 @@ include 'header.php'
 
                     $tax = (($outtaxprice * 8) / 100);
                     
-                    //$_SESSION['totalprice'] = $total;
+                    
 
                     if($outtaxprice == 0)
                     {
@@ -73,6 +76,7 @@ include 'header.php'
                          $shipping = 5;     
                     }
                     $total = $outtaxprice + $tax + $shipping;
+                    //$_SESSION['totalprice'] = $total;
                     echo
                          "<div class=\"col-lg-4 col-md-5 pull-right\">
                               <ul class=\"list-group\">

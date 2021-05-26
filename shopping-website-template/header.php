@@ -26,30 +26,29 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="primary-nav-button" type="button">Menu</button>
-                        <a href="index.html">
+                        <a href="index.php">
                             <div class="logo">
                                 <img src="img/logo-update.png" alt="Venue Logo">
                             </div>
                         </a>
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
 
-                                <li class='active'><a href="products.php?category=All">Books</a></li>
+                                <li><a href="products.php?category=All">Books</a></li>
 
                                 <li><a href="checkout.php">Checkout</a></li>
-
-                                <li>
-                                    <a href="#">About</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                        <li><a href="http://localhost/cs306-project-step-4/admin/admin.php">Admin</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <?php
+                                    include '../admin/config.php';
+                                    $uid = $_SESSION['uID'];
+                                    $sql_statement = "SELECT * FROM admin WHERE uID = '$uid'";
+                                    $result = mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
+                                    if ($row = mysqli_fetch_assoc($result))
+                                    {
+                                        echo "<li><a href=\"../admin/admin.php\">Admin</a></li>"; 
+                                    }                                    
+                                ?>
+                                <li><a href="./userpage.php">Profile Page</a></li>
                             </ul>
                         </nav><!-- / #primary-nav -->
                     </div>

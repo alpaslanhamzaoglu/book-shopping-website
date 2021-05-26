@@ -10,7 +10,7 @@ while($row = mysqli_fetch_assoc($result)) {
     $email = $row['email'];
     $name = $row['name'];
     $surname = $row['surname'];
-    $password = $row['upassword'];
+    $password = $row['password'];
 
 
     if (!empty($_POST['email'])) {
@@ -22,7 +22,7 @@ while($row = mysqli_fetch_assoc($result)) {
     if (!empty($_POST['surname'])) {
         $surname = $_POST['surname'];
     }
-    if (!empty($_POST['upassword'])) {
+    if (!empty($_POST['password'])) {
         $password = $_POST['password'];
     }
 

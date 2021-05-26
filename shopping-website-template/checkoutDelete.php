@@ -1,11 +1,15 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['uID'])) {
+    // redirect to your login page
+    exit();
+}
 include '../admin/config.php';
 
 if(!(empty($_POST['amount'])))
 {
-    $uid = 40;
-    //$uid = $_SESSION['uID'];
+    //$uid = 40;
+    $uid = $_SESSION['uID'];
     $bid = $_POST['bid'];
     $damount = $_POST['amount'];
     $sql_statement = "SELECT * FROM shoppinglist s WHERE s.uID = '$uid' AND s.bID = '$bid'";

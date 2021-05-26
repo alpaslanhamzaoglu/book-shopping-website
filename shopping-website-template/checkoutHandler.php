@@ -1,15 +1,22 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['uID'])) {
+    // redirect to your login page
+    exit();
+}
 include '../admin/config.php';
 
 if(!(empty($_POST['address'])))
 {
     $mysqli = new mysqli('localhost','root','','proje');
     $date = date('Y-m-d');
-    $uid = 40;
+    //$uid = 40;
     $total = 22.28;
     $address = $_POST['address'];
-    //$uid = $_SESSION['uID'];
+    
+    
+    $uid = $_SESSION['uID'];
+    
     //$total = $_SESSION['totalprice'];
 
     $query = "INSERT INTO pastpurchases(totalprice, pdate, paddress) VALUES ($total, '$date', '$address')";

@@ -1,9 +1,13 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['uID'])){
+        exit();
+    }
     include '../admin/config.php';
     $bID = $_POST['button'];
     if(!empty($_POST['comment']))
     {
-        $uID = 31;
+        $uID = $_SESSION['uID'];
         $comment = $_POST['comment'];
         $rating = $_POST['rating'];
         $sql_statement = "SELECT * FROM review WHERE uID = '$uID' AND bID = '$bID'";

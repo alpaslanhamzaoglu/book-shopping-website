@@ -1,7 +1,8 @@
 <?php 
-//session_start();
-
-//if (isset($_SESSION['name']) && isset($_SESSION['surname'])){
+session_start();
+if (!isset($_SESSION['uID'])){
+    exit();
+}
 
 ?>
 
@@ -35,11 +36,17 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="banner-caption">
                         <div class="line-dec"></div>
-                        <h1>Hello, <?php echo $_SESSION['name']; ?></h1>
+                        <?php
+                        include "../admin/config.php";
+                            $uid = $_SESSION['uID'];
+                             $sql_statement = "SELECT * FROM users WHERE uID = $uid";
+                             $result2 = mysqli_query($db, $sql_statement);
+                             $row2 = mysqli_fetch_assoc($result2);
+                             $name = $row2['name'];
+                        
+                        echo "<h1>Hello, $name </h1>";
+                        ?>
                         <h2>Let's read and grow together!</h2>
-                        <div class="blue-button">
-                            <a href="contact.html">Contact Us</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -53,10 +60,7 @@
                         <div class="left-content">
                             <br>
                             <h4>About us</h4>
-                            <p>In BookCrave, we all work every day to make sure every one of our precious customers are happy. We are a team that works hard to guarantee happiness. From science fiction to poem, from poem to sports, we work with the best!</p>
-                            <div class="blue-button">
-                                <a href="about-us.html">Discover More</a>
-                            </div>
+                            <p>In BookCrave, we all work every day to make sure every one of our precious customers are happy. We are a team that works hard to guarantee happiness. From science fiction to poem, from poem to sports, we work with the best!</p>                            
                             <br>
                         </div>
                     </div>
@@ -88,7 +92,7 @@
                                 <h4>Fiction</h4>
                                 <p>Anything is possible in fiction! They can be about space, time travel, aliens or time-traveling aliens in space :)</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=Fiction">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +110,7 @@
                                 <h4>Novels</h4>
                                 <p>Get to know the characters in depth and experience everything with them. Novels may or may not stick to reality but they sure teach a lot.</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=Novel">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +127,7 @@
                                 <h4>Social Realism</h4>
                                 <p>Social realist artists describe the daily life of workers and poor people in a realistic way. Thus, they lack attractiveness.</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=Social Realism">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +143,7 @@
                                 <h4>Dystopian Fiction</h4>
                                 <p>They challenge the readers to think differently about the current social and political climates and may even inspire action.</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=Dystopian Fiction">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +159,7 @@
                                 <h4>History</h4>
                                 <p>They capture the details of the period as accurately as possible for authenticity, including social norms, manners, customs, traditions.</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=History">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +175,7 @@
                                 <h4>Dystopian Novels</h4>
                                 <p>They are imagined communities or societies that are dehumanizing and frightening. A dystopia is antonym of a utopia.</p>
                                 <div class="text-button">
-                                    <a href="product-details.html">View More</a>
+                                    <a href="products.php?category=Dystopian Novel">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +191,7 @@
                                 <h4>Poetry</h4>
                                 <p>They contain words that follow a rhythm or structure, and sometimes rhyme, that are designed on evoke emotion and thought!</p>
                                 <div class="text-button">
-                                    <a href="product-details.php">View More</a>
+                                    <a href="products.php?category=Poetry">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -208,9 +212,9 @@
                             <h2>Contact Us</h2>
                             <h3>All your ideas and suggestions are very important to us. Please contact us if you have any questions as well!</h3>
                         <div class="blue-button">
-                            <a href="contact.html">Talk to us</a>
-                            <br><br>
-                            <a href="logout.php">Logout</a>
+                            
+                            
+                            <a href="login2.php">Logout</a>
                             <body>
                         </div>
                     </div>

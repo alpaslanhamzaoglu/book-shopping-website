@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (!isset($_SESSION['uID'])){
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <?php include 'header.php'?>
@@ -6,7 +13,7 @@
             <div class="container">
                <div class="row">
                    <?php
-                    $uID = 40;
+                    $uID = $_SESSION['uID'];
                     $url= $_SERVER['REQUEST_URI'];  
                     $url_components = parse_url($url);
                     parse_str($url_components['query'], $params);
@@ -55,7 +62,7 @@
                         <br>
                         <divt class = \"row\">
                             <divt class=\"col-md-6 col-xs-12 \">
-                               <p  class = 'lead'> <a href = authors.php?author_id=$authorid>Author: $name $surname</a> </p>
+                               <p  class = 'lead'> <a href = author.php?author_id=$authorid>Author: $name $surname</a> </p>
                             </divt>
                         </divt>
                         <divt class = \"row\">
@@ -94,7 +101,7 @@
                         </form>
                         <br>";
                     
-                    echo "<form action='/cs306-project/shopping-website-template/addtowishlist.php?bID=" . $id . "&uID=". $uID . "' method='POST'>";
+                    echo "<form action='./addtowishlist.php?bID= $id &uID= $uID ' method='POST'>";
                     echo  "<button class='btn btn-danger' type='submit'> ADD TO WISHLIST </button>";
                     echo "</div>"; 
                     echo "</form>";

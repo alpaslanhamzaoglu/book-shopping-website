@@ -1,8 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION['uID'])){
+    exit();
+}
     include '../shopping-website-template/header.php';
     include "config.php";
     $sql_statement = "SELECT email, name, surname FROM `users` WHERE uID=";
-    $user_id = 40;
+    $user_id = $_SESSION['uID'];
+
     $sql_statement = $sql_statement . $user_id;
     $result = mysqli_query($db, $sql_statement);
     while($row = mysqli_fetch_assoc($result)) {
@@ -114,10 +119,8 @@ body {
 
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img src="img/logo-update.png" alt="Venue Logo"> <br> <span class="text-black-50">BookCrave Corporation by CS306</span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
+        
+        <div class="col-md-6 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
@@ -129,7 +132,7 @@ body {
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Email</label><input name="email" type="text" class="form-control" placeholder="enter email id" value=""></div>
-                        <div class="col-md-12"><label class="labels" >Password</label><input  name="password" type="text" class="form-control" placeholder="password" value=""></div>
+                        <div class="col-md-12"><label class="labels" >Password</label><input  name="password" type="pasword" class="form-control" placeholder="password" value=""></div>
                     </div>
                     <input type="hidden" name="uID" value="<?php echo $user_id; ?>" />
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" type="button">Save Profile</button></div>
@@ -137,7 +140,7 @@ body {
             </form>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="p-3 py-5">
             <h4 class="text-left">Your Wishlist</h4>
             <br>
@@ -146,7 +149,7 @@ body {
                      $result = mysqli_query($db, $sql_statement);
                      while($row = mysqli_fetch_assoc($result)) {
                          echo '<div class="col-md-12"><label class="labels">' . $row['btitle'] . '</label></div>';
-                         echo '<a href="/cs306-project/shopping-website-template/removefromwishlist.php?bID='. $row['bID'] . '&uID='. $user_id .'"><div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-minus" href="/shopping-website-template/removefromwishlist.php"></i>&nbsp;Remove</span></div><br></a>';
+                         echo '<a href="./removefromwishlist.php?bID='. $row['bID'] . '&uID='. $user_id .'"><div class="d-flex justify-content-between align-items-center experience"><span class="border px-3 p-1 add-experience"><i class="fa fa-minus" href="/shopping-website-template/removefromwishlist.php"></i>&nbsp;Remove</span></div><br></a>';
                      }
                 ?>  
                 
