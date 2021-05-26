@@ -1,7 +1,7 @@
 <?php
     include '../admin/config.php';
     $bID = $_POST['button'];
-    if(!empty($_POST['amount']))
+    if(!empty($_POST['amount']) && $_POST['amount'] > 0)
     {
         $uID = 30;
         $amount = $_POST['amount'];
@@ -16,7 +16,7 @@
         }
         $sql_statement = "INSERT INTO shoppinglist(uID,bID,amount) VALUES ($uID,$bID,$amount)";
         mysqli_query($db, $sql_statement)  or die(mysqli_error($db));
-        header ("Location: products.php");
+        header ("Location: products.php?category=All");
     }
     else
     {

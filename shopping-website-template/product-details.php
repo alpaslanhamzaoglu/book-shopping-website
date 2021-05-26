@@ -25,6 +25,7 @@
                     $sql_statement = "SELECT * FROM authors a1 WHERE a1.aID = (SELECT aID FROM wrote w WHERE w.bID = '$id')";
                     $result = mysqli_query($db, $sql_statement);
                     $row = mysqli_fetch_assoc($result);
+                    $authorid = $row['aID'];
                     $name = $row['aname'];
                     $surname = $row['asurname']; 
 
@@ -53,7 +54,7 @@
                         <br>
                         <divt class = \"row\">
                             <divt class=\"col-md-6 col-xs-12 \">
-                                <p class = 'lead'>Author: $name $surname</p>
+                               <p  class = 'lead'> <a href = authors.php?author_id=$authorid>Author: $name $surname</a> </p>
                             </divt>
                         </divt>
                         <divt class = \"row\">
