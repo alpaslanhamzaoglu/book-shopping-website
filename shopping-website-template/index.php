@@ -44,7 +44,7 @@ if (!isset($_SESSION['uID'])){
                              $row2 = mysqli_fetch_assoc($result2);
                              $name = $row2['name'];
                         
-                        echo "<h1>Hello, $name </h1>";
+                        echo "<h1 style=\"color: #F0E7D8\">Hello, $name </h1>";
                         ?>
                         <h2>Let's read and grow together!</h2>
                     </div>
@@ -209,8 +209,8 @@ if (!isset($_SESSION['uID'])){
                 <div class="col-md-10 col-md-offset-1">
                     <div class="banner-caption">
                         <div class="line-dec"></div>
-                            <h2>Contact Us</h2>
-                            <h3>All your ideas and suggestions are very important to us. Please contact us if you have any questions as well!</h3>
+                            <h2>Thank you!</h2>
+                            <h3 style="color: white">All your ideas and suggestions are very important to us. Please contact us if you have any questions as well!</h3>
                         <div class="blue-button">
                             
                             

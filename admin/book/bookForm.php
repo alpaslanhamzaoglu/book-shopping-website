@@ -42,7 +42,7 @@ else if ($_POST["button"] == "search") {
             if (substr($sql_statement,-6) != "WHERE ") {
                 $sql_statement = $sql_statement . " AND "; 
             }
-            $sql_statement = $sql_statement . " blanguage = " . $_POST['bookLanguage'];
+            $sql_statement = $sql_statement . " blanguage = " . "'" . $_POST['bookLanguage'] . "'";
         }
         if (!empty($_POST['publisher'])) {
             if (substr($sql_statement,-6) != "WHERE ") {
